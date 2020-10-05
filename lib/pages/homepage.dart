@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'custom_assets/custom_scaffold.dart';
 import '../buttons/main_button.dart';
-import '../theme.dart' as Themes;
 
 class HomePage extends StatefulWidget {
   HomePage({Key key}) : super(key: key);

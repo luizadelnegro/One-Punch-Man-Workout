@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_speed_dial/flutter_speed_dial.dart';
-import '../theme.dart' as Themes;
 
 class HeroRanking extends StatelessWidget {
   @override
@@ -10,7 +9,7 @@ class HeroRanking extends StatelessWidget {
       appBar: AppBar(
         title: Text(title),
       ),
-      backgroundColor: Themes.CompanyColors.red[100],
+      backgroundColor: Theme.of(context).backgroundColor,
       body: GridView.count(
         // Create a grid with 2 columns. If you change the scrollDirection to
         // horizontal, this produces 2 rows.

@@ -1,7 +1,7 @@
 import 'package:flutter/widgets.dart';
 import 'package:flutter/material.dart';
 import 'route_generator.dart';
-import 'theme.dart' as Theme;
+import 'theme.dart';
 
 void main() {
   runApp(MyApp());
@@ -13,8 +13,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Home',
-      color: Theme.CompanyColors.red[50],
-      theme: Theme.CompanyThemeData,
+      color: Theme.of(context).primaryColor,
+      theme: DefaultPalette,
       initialRoute: '/',
       onGenerateRoute: RouteGenerator.generateRoute,
     );

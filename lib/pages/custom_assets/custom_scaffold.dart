@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../drawer.dart';
-import 'package:flutter_speed_dial/flutter_speed_dial.dart';
-import '../../theme.dart' as Theme;
+
 
 class CustomScaffold extends StatelessWidget {
   final Widget body;
@@ -14,7 +13,7 @@ class CustomScaffold extends StatelessWidget {
       appBar: AppBar(
         title: Text(title),
       ),
-      backgroundColor: Theme.CompanyColors.red[100],
+      backgroundColor: Theme.of(context).backgroundColor,
       body: body,
       drawer: SideMenu(),
     );
