@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'assets/addlayout.dart';
-import 'assets/validators.dart';
-
-
+import 'custom_assets/addlayout.dart';
+import 'custom_assets/validators.dart';
 
 class RegisterExerciseForm extends StatefulWidget {
   _RegisterExerciseFormState createState() => _RegisterExerciseFormState();
@@ -57,7 +55,6 @@ class RegisterExercise extends StatelessWidget {
     return AddLayout(
       body: RegisterExerciseForm(),
       object: "Register Exercise!",
-      );
+    );
   }
-  
 }

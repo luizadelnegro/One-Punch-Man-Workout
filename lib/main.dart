@@ -1,11 +1,11 @@
 import 'package:flutter/widgets.dart';
 import 'package:flutter/material.dart';
 import 'route_generator.dart';
+import 'theme.dart' as Theme;
 
 void main() {
   runApp(MyApp());
 }
-
 
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
@@ -13,13 +13,10 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Home',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-        visualDensity: VisualDensity.adaptivePlatformDensity,
-      ),
+      color: Theme.CompanyColors.red[50],
+      theme: Theme.CompanyThemeData,
       initialRoute: '/',
       onGenerateRoute: RouteGenerator.generateRoute,
     );
   }
 }
-
