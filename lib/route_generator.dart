@@ -4,14 +4,16 @@ import 'pages/errorpage.dart';
 import 'pages/registerexercise.dart';
 import 'pages/heroranking.dart';
 import 'pages/agendapage.dart';
+import 'welcomescreen.dart';
 
 class RouteGenerator {
   static Route<dynamic> generateRoute(RouteSettings settings) {
-    final args = settings.arguments;
 
     switch (settings.name) {
       case '/':
         return MaterialPageRoute(builder: (_) => HomePage());
+      case '/welcome':
+        return MaterialPageRoute(builder: (_) => WelcomeScreen());
       case '/exercise/register':
         return MaterialPageRoute(builder: (_) => RegisterExercise());
       case '/ranking':

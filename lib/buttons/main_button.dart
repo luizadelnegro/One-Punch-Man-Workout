@@ -1,6 +1,5 @@
 import 'dart:math' as math;
 import 'package:flutter/material.dart';
-import '../theme.dart' as Themes;
 
 class MainButton extends StatefulWidget {
   final Duration _duration = const Duration(milliseconds: 70);

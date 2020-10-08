@@ -27,6 +27,7 @@ dependencies:
   flutter_speed_dial: ^1.2.5
   flutter_calendar_carousel: ^1.4.12
   zefyr: ^0.11.0
+  shared_preferences: ^0.5.12
   
 
 dev_dependencies:
