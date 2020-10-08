@@ -22,7 +22,7 @@ class MainButton extends StatefulWidget {
 
 class _MainButtonState extends State<MainButton> {
   double _faceLeft = 20.0;
-  double _faceTop = 0.0;
+  double _faceTop = 10.0;
   double _sideWidth = 20.0;
   double _bottomHeight = 20.0;
   Curve _curve = Curves.ease;
@@ -47,8 +47,8 @@ class _MainButtonState extends State<MainButton> {
                   color: widget.color[800],
                 ),
               ),
-              top: 0.2,
-              left: 100,
+              top: 10.2,
+              left: 0,
             ),
             Positioned(
               child: Transform(
@@ -65,8 +65,8 @@ class _MainButtonState extends State<MainButton> {
                   ),
                 ),
               ),
-              top: 60.0,
-              left: 120.1,
+              top: 70.0,
+              left: 20.1,
             ),
             AnimatedPositioned(
               duration: widget._duration,
@@ -81,7 +81,7 @@ class _MainButtonState extends State<MainButton> {
                 ),
                 child: widget.child,
               ),
-              left: _faceLeft + 100,
+              left: _faceLeft,
               top: _faceTop,
             ),
           ],
