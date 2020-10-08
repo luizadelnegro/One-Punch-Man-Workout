@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:one_punch_man_workout/preferences_controller.dart';
 
 final entries = [
   {'title': 'Home', 'routename': '/'},
@@ -6,9 +7,11 @@ final entries = [
   {'title': 'Ranking', 'routename': '/ranking'},
 ];
 
-class SideMenu extends StatelessWidget {
-  SideMenu({Key key}) : super(key: key);
-
+class SideMenu extends StatefulWidget {
+  @override
+  State<StatefulWidget> createState() => _SideMenuState();
+}
+class _SideMenuState extends State<SideMenu> {
   @override
   Widget build(BuildContext context) {
     return Drawer(
@@ -17,13 +20,32 @@ class SideMenu extends StatelessWidget {
         children: <Widget>[
           Expanded(
               flex: 1,
-              child: DrawerHeader(
-                child: Center(
-                  child: Text('Hero Name'),
-                ),
-                decoration:
-                    BoxDecoration(color: Theme.of(context).primaryColor),
-              )),
+              child: FutureBuilder( 
+                future: PreferencesController.getHeroName(),
+                builder: (context, snapshot){
+                  final heroname = snapshot.data;
+                  return DrawerHeader(
+                    child: Center(
+                      child: Row( 
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text('$heroname'),
+                          IconButton(
+                            alignment: Alignment.topRight,
+                            onPressed: () => Navigator.of(context).pushNamed('/welcome'),
+                            icon: Icon(Icons.edit),
+
+                          )
+                        
+                        ]
+                      )
+                    ),
+                    decoration:
+                        BoxDecoration(color: Theme.of(context).primaryColor),
+                  );
+                } 
+              )
+          ),
           Expanded(
               flex: 4,
               child: ListView.separated(
