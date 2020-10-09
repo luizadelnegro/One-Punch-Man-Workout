@@ -100,6 +100,12 @@ class _MainButtonState extends State<MainButton> {
       _sideWidth = 0.0;
       _bottomHeight = 0.0;
     });
+    setState(() {
+      _faceLeft = 20.0;
+      _faceTop = 0.0;
+      _sideWidth = 20.0;
+      _bottomHeight = 20.0;
+    });
     widget.onPressed();
   }
 

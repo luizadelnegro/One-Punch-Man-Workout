@@ -24,7 +24,10 @@ class WelcomeScreen extends StatelessWidget {
                     right: 30.0,
                     left: 30.0,
                   ),
-                  child: Text("Welcome hero wannabe! What is your name ?"),
+                  child: Text(
+                    "Welcome hero wannabe! What is your name ?",
+                    style: TextStyle(fontFamily: 'Anime'),
+                  ),
                 ),
                 Container(
                   margin: EdgeInsets.only(
@@ -42,23 +45,24 @@ class WelcomeScreen extends StatelessWidget {
                 ),
                 Container(
                   margin: EdgeInsets.only(
-                    top: 100.0,
-                    left: 60.0,
+                    top: 70.0,
+                    left: 80.0,
                   ),
-                  child: MainButton(
+                  child: IconButton(
+                    icon: Image.asset('assets/images/fist_button_cleanbg.png'),
+                    iconSize: 150.0,
                     onPressed: () {
                       if (_formKey.currentState.validate()) {
                         PreferencesController.setHeroName(myController.text);
                         Navigator.of(context).pushNamed('/');
                       }
                     },
-                    child: Text('Enviar'),
                   ),
                 ),
                 Container(
                   margin: EdgeInsets.only(
-                    top: 160.0,
-                    left: 30.0,
+                    top: 180.0,
+                    left: 20.0,
                   ),
                   child: Image.asset('assets/images/welcome_image.png',
                       height: SizeConfig.blockSizeVertical * 100,
