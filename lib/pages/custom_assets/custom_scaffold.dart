@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../drawer.dart';
 
-
 class CustomScaffold extends StatelessWidget {
   final Widget body;
   final String title;
@@ -10,6 +9,7 @@ class CustomScaffold extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomPadding: false,
       appBar: AppBar(
         title: Text(title),
       ),

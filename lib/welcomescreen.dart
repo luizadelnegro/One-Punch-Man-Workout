@@ -57,7 +57,7 @@ class WelcomeScreen extends StatelessWidget {
                 ),
                 Container(
                   margin: EdgeInsets.only(
-                    top: 120.0,
+                    top: 160.0,
                     left: 30.0,
                   ),
                   child: Image.asset('assets/images/welcome_image.png',
