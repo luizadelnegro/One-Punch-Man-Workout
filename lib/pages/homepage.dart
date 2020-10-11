@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'custom_assets/custom_scaffold.dart';
-
+import '../buttons/swipe_button.dart';
 import 'package:one_punch_man_workout/preferences_controller.dart';
 import 'package:one_punch_man_workout/size_config.dart';
 import 'package:one_punch_man_workout/drawer.dart';
@@ -43,14 +43,21 @@ class _HomePageState extends State<HomePage> {
                       )),
                   Text("Welcome back $heroName !"),
                   Image.asset(
-                    'assets/images/saitama_pose.png',
-                    height: SizeConfig.blockSizeVertical * 50,
-                    width: SizeConfig.blockSizeHorizontal * 30,
+                    'assets/images/mainpage-bw.png',
+                    height: SizeConfig.blockSizeVertical * 60,
+                    width: SizeConfig.blockSizeHorizontal * 40,
                   ),
                   RaisedButton(
                     onPressed: () =>
                         Navigator.of(context).pushNamed('/exercise/register'),
                     child: Text("Register your exercise!"),
+                  ),
+                  ////
+                  Container(
+                    // vai ter um box wrapped with a gesture detector
+                    height: 100.0,
+                    width: 100.0,
+                    child: SwipeWidget(),
                   ),
                 ],
               ),
