@@ -4,6 +4,7 @@ import '../buttons/swipe_button.dart';
 import 'package:one_punch_man_workout/preferences_controller.dart';
 import 'package:one_punch_man_workout/size_config.dart';
 import 'package:one_punch_man_workout/drawer.dart';
+import 'custom_assets/custom_barless_scaffold.dart';
 
 class HomePage extends StatefulWidget {
   HomePage({Key key}) : super(key: key);
@@ -21,53 +22,36 @@ class _HomePageState extends State<HomePage> {
         future: PreferencesController.getHeroName(),
         builder: (context, snapshot) {
           final heroName = snapshot.data;
-          return SafeArea(
-              child: Scaffold(
-            key: _scaffoldKey,
-            backgroundColor: Theme.of(context).backgroundColor,
-            drawer: SideMenu(),
-            body: Center(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: <Widget>[
-                  // Align prevents the child container of occupying all width
-                  Align(
-                      alignment: Alignment.topLeft,
-                      child: Container(
-                        child: RaisedButton(
-                          child: Icon(Icons.clear_all),
-                          onPressed: () =>
-                              _scaffoldKey.currentState.openDrawer(),
-                          color: Theme.of(context).backgroundColor,
-                        ),
-                      )),
-                  Text("Welcome back $heroName !"),
-                  Image.asset(
-                    'assets/images/mainpage-bw.png',
-                    height: SizeConfig.blockSizeVertical * 60,
-                    width: SizeConfig.blockSizeHorizontal * 40,
-                  ),
-                  RaisedButton(
-                    onPressed: () =>
-                        Navigator.of(context).pushNamed('/exercise/register'),
-                    child: Text("Register your exercise!"),
-                  ),
-                  ////
-                  Container(
-                    // vai ter um box wrapped with a gesture detector
-                    color: Colors.black,
-                    height: 100.0,
-                    width: 100.0,
-                    child: SwipingButton(
-                      text: "Swipe to exercise!",
-                      onSwipeCallback: () =>
-                          Navigator.of(context).pushNamed('/exercise/register'),
-                    ),
-                  ),
-                ],
+          return CustomBarlessScaffold(children: [
+            Center(
+                child: Text(
+              "Welcome back, $heroName !",
+              style: TextStyle(
+                fontFamily: 'Mangat',
+                color: Theme.of(context).primaryColor,
+                fontSize: SizeConfig.blockSizeHorizontal * 5,
+              ),
+            )),
+            Image.asset(
+              'assets/images/saitama_pose.png',
+              height: SizeConfig.blockSizeVertical * 50,
+              width: SizeConfig.blockSizeHorizontal * 30,
+            ),
+            RaisedButton(
+              onPressed: () =>
+                  Navigator.of(context).pushNamed('/exercise/register'),
+              child: Text("Register your exercise!"),
+            ),
+            Container(
+              height: 100.0,
+              width: 100.0,
+              child: SwipingButton(
+                text: "Swipe to exercise!",
+                onSwipeCallback: () =>
+                    Navigator.of(context).pushNamed('/exercise/register'),
               ),
             ),
-          ));
+          ]);
         });
   }
 }

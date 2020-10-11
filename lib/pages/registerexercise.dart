@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'custom_assets/addlayout.dart';
 import 'custom_assets/validators.dart';
-
+import 'package:one_punch_man_workout/buttons/checkbox_form_listtile.dart';
+import 'package:intl/intl.dart';
 class RegisterExerciseForm extends StatefulWidget {
   _RegisterExerciseFormState createState() => _RegisterExerciseFormState();
 }
@@ -13,7 +14,9 @@ class _RegisterExerciseFormState extends State<RegisterExerciseForm> {
   // Note: This is a GlobalKey<FormState>,
   // not a GlobalKey<MyCustomFormState>.
   final _formKey = GlobalKey<FormState>();
-
+  static final DateTime now = DateTime.now();
+  static final DateFormat formatter = DateFormat('yyyy-MM-dd');
+  final String formatted = formatter.format(now);
   @override
   Widget build(BuildContext context) {
     // Build a Form widget using the _formKey created above.
@@ -22,14 +25,33 @@ class _RegisterExerciseFormState extends State<RegisterExerciseForm> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          TextFormField(
-            validator: Validators.title,
-            decoration: const InputDecoration(
-              hintText: 'Text Input',
-            ),
-          ),
           Padding(
-            padding: const EdgeInsets.symmetric(vertical: 16.0),
+            padding: EdgeInsets.all(50),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+              Text("Date: "),
+              Text(formatted)
+              ],)
+          ),
+          CheckboxFormListTile(
+            title: Text("10 Abdominais"),
+            secondary: Icon(Icons.ac_unit),  
+          ),
+          CheckboxFormListTile(
+            title: Text("10 Flexões"),
+            secondary: Icon(Icons.ac_unit),  
+          ),
+          CheckboxFormListTile(
+            title: Text("10 Agachamentos"),
+            secondary: Icon(Icons.ac_unit),  
+          ),
+          CheckboxFormListTile(
+            title: Text("1KM Corrida"),
+            secondary: Icon(Icons.ac_unit),  
+          ),
+          Center(
+            
             child: RaisedButton(
               onPressed: () {
                 // Validate returns true if the form is valid, or false
