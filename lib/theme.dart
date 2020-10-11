@@ -19,3 +19,14 @@ final ThemeData DarkPallette = new ThemeData(
   accentColor: Color.fromARGB(150, 255, 255, 0),
   accentColorBrightness: Brightness.dark
 );
+
+final ThemeData Manga = new ThemeData( 
+  brightness: Brightness.light,
+  primaryColor: Colors.grey,
+  primarySwatch: Colors.grey,
+  backgroundColor: Colors.grey[200],
+  canvasColor: Colors.black12,
+  bottomAppBarColor: Colors.black,
+  fontFamily: 'Mangat',
+  
+);

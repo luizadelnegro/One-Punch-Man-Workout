@@ -6,6 +6,7 @@ import 'package:one_punch_man_workout/preferences_controller.dart';
 import 'theme.dart';
 import 'route_generator.dart';
 import 'package:one_punch_man_workout/size_config.dart';
+import 'package:flutter/services.dart';
 
 void main() {
   runApp(MyApp());
@@ -17,10 +18,11 @@ class MyMaterialApp extends StatelessWidget {
   final initialRoute;
 
   Widget build(BuildContext context){
+    
     return MaterialApp( 
       title: this.title,
       color: Theme.of(context).primaryColor,
-      theme: DarkPallette,
+      theme: Manga,
       initialRoute: this.initialRoute,
       onGenerateRoute: RouteGenerator.generateRoute,
     );
