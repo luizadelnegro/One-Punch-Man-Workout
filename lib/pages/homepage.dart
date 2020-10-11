@@ -55,9 +55,14 @@ class _HomePageState extends State<HomePage> {
                   ////
                   Container(
                     // vai ter um box wrapped with a gesture detector
+                    color: Colors.black,
                     height: 100.0,
                     width: 100.0,
-                    child: SwipeWidget(),
+                    child: SwipingButton(
+                      text: "Swipe to exercise!",
+                      onSwipeCallback: () =>
+                          Navigator.of(context).pushNamed('/exercise/register'),
+                    ),
                   ),
                 ],
               ),
