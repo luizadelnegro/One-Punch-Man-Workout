@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:one_punch_man_workout/preferences_controller.dart';
+import 'size_config.dart';
 
 final entries = [
   {'title': 'Home', 'routename': '/'},
@@ -25,20 +26,30 @@ class _SideMenuState extends State<SideMenu> {
                 builder: (context, snapshot){
                   final heroname = snapshot.data;
                   return DrawerHeader(
-                    child: Center(
-                      child: Row( 
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text('$heroname'),
-                          IconButton(
-                            alignment: Alignment.topRight,
+                    child: 
+                    Stack(  
+                      children: [
+                        Center(
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              CircleAvatar(
+                                  child: Text("Avatar"),
+                                  backgroundColor: Theme.of(context).backgroundColor,
+                                  radius: SizeConfig.blockSizeHorizontal * 7,
+                              ),                       
+                              Text('$heroname'),
+                            ]
+                          )
+                        ),
+                        Align(
+                          alignment: Alignment.topRight,
+                          child: IconButton(
                             onPressed: () => Navigator.of(context).pushNamed('/welcome'),
                             icon: Icon(Icons.edit),
-
                           )
-                        
-                        ]
-                      )
+                        )
+                      ]
                     ),
                     decoration:
                         BoxDecoration(color: Theme.of(context).primaryColor),
@@ -52,7 +63,7 @@ class _SideMenuState extends State<SideMenu> {
                 itemCount: entries.length,
                 itemBuilder: (BuildContext context, int index) {
                   return ListTile(
-                    title: Text(entries[index]['title']),
+                    title: Text(entries[index]['title'], style: TextStyle(color: Theme.of(context).backgroundColor),),
                     onTap: () {
                       // Update the state of the app then close the drawer
                       Navigator.of(context)
