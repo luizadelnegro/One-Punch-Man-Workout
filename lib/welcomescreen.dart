@@ -48,7 +48,7 @@ class WelcomeScreen extends StatelessWidget {
                     left: 80.0,
                   ),
                   child: IconButton(
-                    icon: Image.asset('assets/images/fist_button_cleanbg.png'),
+                    icon: Image.asset('assets/images/fist_button_bw.png'),
                     iconSize: 150.0,
                     onPressed: () {
                       if (_formKey.currentState.validate()) {
