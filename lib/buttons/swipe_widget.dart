@@ -43,11 +43,11 @@ class _SwipeableWidgetState extends State<SwipeableWidget>
   void initState() {
     super.initState();
 
-    _controller = AnimationController(
-        vsync: this, duration: const Duration(milliseconds: 300))
-      ..addListener(() {
-        setState(() {});
-      });
+    _controller =
+        AnimationController(vsync: this, duration: const Duration(seconds: 2))
+          ..addListener(() {
+            setState(() {});
+          });
 
     _controller.value = 1.0;
   }
@@ -70,7 +70,7 @@ class _SwipeableWidgetState extends State<SwipeableWidget>
           final widgetSize = context.size.width;
 
           // will only animate the swipe if user start the swipe in the quarter half start page of the widget
-          final minimumXToStartSwiping = widgetSize * 0.25;
+          final minimumXToStartSwiping = widgetSize * 0.35;
           if (_dxStartPosition <= minimumXToStartSwiping) {
             setState(() {
               _dxEndsPosition = details.localPosition.dx;

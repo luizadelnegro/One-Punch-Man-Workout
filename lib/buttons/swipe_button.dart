@@ -26,7 +26,7 @@ class SwipingButton extends StatelessWidget {
           Container(
             height: 80.0,
             decoration: BoxDecoration(
-                color: Colors.greenAccent,
+                color: Theme.of(context).backgroundColor,
                 borderRadius: BorderRadius.circular(4.0)),
           ),
           SwipeableWidget(
@@ -38,7 +38,7 @@ class SwipingButton extends StatelessWidget {
               ),
               height: 80.0,
               decoration: BoxDecoration(
-                  color: Colors.green,
+                  color: Theme.of(context).primaryColor,
                   borderRadius: BorderRadius.circular(4.0)),
             ),
             onSwipeCallback: onSwipeCallback,
@@ -61,12 +61,26 @@ class SwipingButton extends StatelessWidget {
     );
   }
 
+  Widget _buildText() {
+    final textStyle = TextStyle(
+        fontSize: 18.0, fontWeight: FontWeight.w500, color: Colors.white);
+    return Flexible(
+      flex: 2,
+      child: Text(
+        text.toUpperCase(),
+        style: textStyle,
+        maxLines: 1,
+        overflow: TextOverflow.ellipsis,
+      ),
+    );
+  }
+
   Widget _buildContent() {
     return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
       crossAxisAlignment: CrossAxisAlignment.center,
       children: <Widget>[
         _buildImage(),
+        _buildText(),
       ],
     );
   }
