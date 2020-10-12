@@ -33,14 +33,9 @@ class _HomePageState extends State<HomePage> {
               ),
             )),
             Image.asset(
-              'assets/images/saitama_pose.png',
+              'assets/images/mainpage-bw.png',
               height: SizeConfig.blockSizeVertical * 50,
               width: SizeConfig.blockSizeHorizontal * 30,
-            ),
-            RaisedButton(
-              onPressed: () =>
-                  Navigator.of(context).pushNamed('/exercise/register'),
-              child: Text("Register your exercise!"),
             ),
             Container(
               height: 100.0,
