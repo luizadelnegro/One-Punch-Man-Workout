@@ -3,6 +3,8 @@ import 'custom_assets/addlayout.dart';
 import 'custom_assets/validators.dart';
 import 'package:one_punch_man_workout/buttons/checkbox_form_listtile.dart';
 import 'package:intl/intl.dart';
+import 'package:one_punch_man_workout/size_config.dart';
+
 class RegisterExerciseForm extends StatefulWidget {
   _RegisterExerciseFormState createState() => _RegisterExerciseFormState();
 }
@@ -26,32 +28,44 @@ class _RegisterExerciseFormState extends State<RegisterExerciseForm> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           Padding(
-            padding: EdgeInsets.all(50),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-              Text("Date: "),
-              Text(formatted)
-              ],)
-          ),
+              padding: EdgeInsets.all(50),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [Text("Date: "), Text(formatted)],
+              )),
           CheckboxFormListTile(
             title: Text("10 Abdominais"),
-            secondary: Icon(Icons.ac_unit),  
+            secondary: Image.asset(
+              'assets/images/abd_bw.png',
+              height: SizeConfig.blockSizeVertical * 30,
+              width: SizeConfig.blockSizeHorizontal * 30,
+            ),
           ),
           CheckboxFormListTile(
             title: Text("10 Flexões"),
-            secondary: Icon(Icons.ac_unit),  
+            secondary: Image.asset(
+              'assets/images/flex_bw.png',
+              height: SizeConfig.blockSizeVertical * 30,
+              width: SizeConfig.blockSizeHorizontal * 30,
+            ),
           ),
           CheckboxFormListTile(
             title: Text("10 Agachamentos"),
-            secondary: Icon(Icons.ac_unit),  
+            secondary: Image.asset(
+              'assets/images/squat_bw.png',
+              height: SizeConfig.blockSizeVertical * 30,
+              width: SizeConfig.blockSizeHorizontal * 30,
+            ),
           ),
           CheckboxFormListTile(
             title: Text("1KM Corrida"),
-            secondary: Icon(Icons.ac_unit),  
+            secondary: Image.asset(
+              'assets/images/run_bw.png',
+              height: SizeConfig.blockSizeVertical * 30,
+              width: SizeConfig.blockSizeHorizontal * 30,
+            ),
           ),
           Center(
-            
             child: RaisedButton(
               onPressed: () {
                 // Validate returns true if the form is valid, or false

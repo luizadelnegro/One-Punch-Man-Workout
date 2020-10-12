@@ -56,6 +56,11 @@ flutter:
     - assets/images/fist_button_bw.png
     - assets/images/mainpage-cleanbg.png
     - assets/images/mainpage-bw.png
+    - assets/images/abd_bw.png
+    - assets/images/flex_bw.png
+    - assets/images/run_bw.png
+    - assets/images/squat_bw.png
+
 
   fonts:
     - family: Mangat
