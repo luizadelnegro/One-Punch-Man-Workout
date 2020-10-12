@@ -28,7 +28,7 @@ dependencies:
   flutter_calendar_carousel: ^1.4.12
   zefyr: ^0.11.0
   shared_preferences: ^0.5.12
-  
+  swipedetector: 1.2.0
 
 dev_dependencies:
   flutter_test:
@@ -53,6 +53,9 @@ flutter:
     - assets/images/saitama_pose.png
     - assets/images/welcome_image.png
     - assets/images/fist_button_cleanbg.png
+    - assets/images/fist_button_bw.png
+    - assets/images/mainpage-cleanbg.png
+    - assets/images/mainpage-bw.png
 
   fonts:
     - family: Mangat

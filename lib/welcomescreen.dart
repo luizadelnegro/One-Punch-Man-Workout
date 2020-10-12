@@ -26,7 +26,6 @@ class WelcomeScreen extends StatelessWidget {
                   ),
                   child: Text(
                     "Welcome hero wannabe! What is your name ?",
-                    style: TextStyle(fontFamily: 'Anime'),
                   ),
                 ),
                 Container(
