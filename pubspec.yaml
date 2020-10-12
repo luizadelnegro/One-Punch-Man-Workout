@@ -60,7 +60,7 @@ flutter:
     - assets/images/flex_bw.png
     - assets/images/run_bw.png
     - assets/images/squat_bw.png
-
+    - assets/data/herosrank.json
 
   fonts:
     - family: Mangat

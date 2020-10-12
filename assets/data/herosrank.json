@@ -1,0 +1,515 @@
+[
+	{
+		"name": "Blast",
+		"class": "S",
+		"rank": 1
+	},
+	{
+		"name": "Tornado of Terror",
+		"class": "S",
+		"rank": 2
+	},
+	{
+		"name": "Silver Fang",
+		"class": "S",
+		"rank": 3
+	},
+	{
+		"name": "Atomic Samurai",
+		"class": "S",
+		"rank": 4
+	},
+	{
+		"name": "Child Emperor",
+		"class": "S",
+		"rank": 5
+	},
+	{
+		"name": "Metal Knight",
+		"class": "S",
+		"rank": 6
+	},
+	{
+		"name": "King",
+		"class": "S",
+		"rank": 7
+	},
+	{
+		"name": "Zombieman",
+		"class": "S",
+		"rank": 8
+	},
+	{
+		"name": "Drive Knight",
+		"class": "S",
+		"rank": 9
+	},
+	{
+		"name": "Pig God",
+		"class": "S",
+		"rank": 10
+	},
+	{
+		"name": "Superalloy Darkshine",
+		"class": "S",
+		"rank": 11
+	},
+	{
+		"name": "Watchdog Man",
+		"class": "S",
+		"rank": 12
+	},
+	{
+		"name": "Flashy Flash",
+		"class": "S",
+		"rank": 13
+	},
+	{
+		"name": "Genos",
+		"class": "S",
+		"rank": 14
+	},
+	{
+		"name": "Metal Bat",
+		"class": "S",
+		"rank": 15
+	},
+	{
+		"name": "Tanktop Master",
+		"class": "S",
+		"rank": 16
+	},
+	{
+		"name": "Puri-Puri Prisoner",
+		"class": "S",
+		"rank": 17
+	},
+	{
+		"name": "Sweet Mask",
+		"class": "A",
+		"rank": 1
+	},
+	{
+		"name": "Laian",
+		"class": "A",
+		"rank": 2
+	},
+	{
+		"name": "Okamaitachi",
+		"class": "A",
+		"rank": 3
+	},
+	{
+		"name": "Bushidrill",
+		"class": "A",
+		"rank": 4
+	},
+	{
+		"name": "Heavy Tank Loincloth",
+		"class": "A",
+		"rank": 5
+	},{
+		"name": "Blue Fire",
+		"class": "A",
+		"rank": 6
+	},
+	{
+		"name": "Magic Trick Man",
+		"class": "A",
+		"rank": 7
+	},
+	{
+		"name": "Death Gatling",
+		"class": "A",
+		"rank": 8
+	},
+	{
+		"name": "Tanktop Vegetarian",
+		"class": "A",
+		"rank": 9
+	},
+	{
+		"name": "Stinger",
+		"class": "A",
+		"rank": 10
+	},
+	{
+		"name": "Twin Tail",
+		"class": "A",
+		"rank": 11
+	},
+	{
+		"name": "Great Philosopher",
+		"class": "A",
+		"rank": 13
+	},
+	{
+		"name": "Butterfly DX",
+		"class": "A",
+		"rank": 16
+	},
+	{
+		"name": "Lightning Genji",
+		"class": "A",
+		"rank": 17
+	},
+	{
+		"name": "Lightning Max",
+		"class": "A",
+		"rank": 19
+	},
+	{
+		"name": "One Shooter",
+		"class": "A",
+		"rank": 22
+	},
+	{
+		"name": "Green",
+		"class": "A",
+		"rank": 24
+	},
+	{
+		"name": "Crescent Eyebroll",
+		"class": "A",
+		"rank": 25
+	},
+	{
+		"name": "Golden Ball",
+		"class": "A",
+		"rank": 26
+	},
+	{
+		"name": "Smile Man",
+		"class": "A",
+		"rank": 2
+	},
+	{
+		"name": "Spring Mustachio",
+		"class": "A",
+		"rank": 28
+	},
+	{
+		"name": "Narcissistoic",
+		"class": "A",
+		"rank": 29
+	},
+	{
+		"name": "Peach Terry",
+		"class": "A",
+		"rank": 30
+	},
+	{
+		"name": "Forte",
+		"class": "A",
+		"rank": 31
+	},
+	{
+		"name": "Shadow Ring",
+		"class": "A",
+		"rank": 32
+	},
+	{
+		"name": "Doll Master",
+		"class": "A",
+		"rank": 33
+	},
+	{
+		"name": "Feather",
+		"class": "A",
+		"rank": 34
+	},
+	{
+		"name": "Air",
+		"class": "A",
+		"rank": 35
+	},
+	{
+		"name": "Chain'n'toad",
+		"class": "A",
+		"rank": 36
+	},
+	{
+		"name": "Biting Snake Fist Sneck",
+		"class": "A",
+		"rank": 37
+	},
+	{
+		"name": "Heavy Kong",
+		"class": "A",
+		"rank": 38
+	},
+	{
+		"name": "Blizzard of Hell",
+		"class": "B",
+		"rank": 1
+	},
+	{
+		"name": "Eyelashes",
+		"class": "B",
+		"rank": 2
+	},
+	{
+		"name": "Mountain Ape",
+		"class": "B",
+		"rank": 3
+	},
+	{
+		"name": "Wild Horn",
+		"class": "B",
+		"rank": 6
+	},
+	{
+		"name": "Glasses",
+		"class": "B",
+		"rank": 20
+	},
+	{
+		"name": "Pink Hornet",
+		"class": "B",
+		"rank": 25
+	},
+	{
+		"name": "Double Hole",
+		"class": "B",
+		"rank": 29
+	},
+	{
+		"name": "Smell Master",
+		"class": "B",
+		"rank": 39
+	},
+	{
+		"name": "Gun Gun",
+		"class": "B",
+		"rank": 43
+	},
+	{
+		"name": "Butcher",
+		"class": "B",
+		"rank": 49
+	},
+	{
+		"name": "Jet Nice Guy",
+		"class": "B",
+		"rank": 50
+	},
+	{
+		"name": "Needle Star",
+		"class": "B",
+		"rank": 60
+	},
+	{
+		"name": "Piko",
+		"class": "B",
+		"rank": 65
+	},
+	{
+		"name": "Crying Man",
+		"class": "B",
+		"rank": 69
+	},
+	{
+		"name": "Trap Tengu",
+		"class": "B",
+		"rank": 70
+	},
+	{
+		"name": "Captain Mizuki",
+		"class": "B",
+		"rank": 71
+	},
+	{
+		"name": "Lily of the Three Section Staff",
+		"class": "B",
+		"rank": 74
+	},
+	{
+		"name": "Bone",
+		"class": "B",
+		"rank": 77
+	},
+	{
+		"name": "Tanktop Black Hole",
+		"class": "B",
+		"rank": 81
+	},
+	{
+		"name": "Mushroom",
+		"class": "B",
+		"rank": 93
+	},
+	{
+		"name": "Shooter",
+		"class": "B",
+		"rank": 99
+	},
+	{
+		"name": "Darkness Blade",
+		"class": "B",
+		"rank": 100
+	},
+	{
+		"name": "Pineapple",
+		"class": "B",
+		"rank": 101
+	},
+	{
+		"name": "Reclusamurai",
+		"class": "B",
+		"rank": 102
+	},
+	{
+		"name": "Mumen Rider",
+		"class": "C",
+		"rank": 1
+	},
+	{
+		"name": "Strange Binding Shell",
+		"class": "C",
+		"rank": 3
+	},
+	{
+		"name": "Tanktop Tiger",
+		"class": "C",
+		"rank": 13
+	},
+	{
+		"name": "D-Pad",
+		"class": "C",
+		"rank": 22
+	},
+	{
+		"name": "Funeral Suspenders",
+		"class": "C",
+		"rank": 40
+	},
+	{
+		"name": "Food Battler Futoshi",
+		"class": "C",
+		"rank": 66
+	},
+	{
+		"name": "Battery Man",
+		"class": "C",
+		"rank": 85
+	},
+	{
+		"name": "Red Muffler",
+		"class": "C",
+		"rank": 89
+	},
+	{
+		"name": "Armored Chief Clerk",
+		"class": "C",
+		"rank": 111
+	},
+	{
+		"name": "Gearsper",
+		"class": "C",
+		"rank": 133
+	},
+	{
+		"name": "Gasmask Cowboy",
+		"class": "C",
+		"rank": 141
+	},
+	{
+		"name": "Grave Eight",
+		"class": "C",
+		"rank": 174
+	},
+	{
+		"name": "Ecolo G",
+		"class": "C",
+		"rank": 179
+	},
+	{
+		"name": "Monocross",
+		"class": "C",
+		"rank": 203
+	},
+	{
+		"name": "Dynamite Man",
+		"class": "C",
+		"rank": 221
+	},
+	{
+		"name": "Angry Man",
+		"class": "C",
+		"rank": 255
+	},
+	{
+		"name": "Horse-Bone",
+		"class": "C",
+		"rank": 283
+	},
+	{
+		"name": "Studless",
+		"class": "C",
+		"rank": 295
+	},
+	{
+		"name": "Poison",
+		"class": "C",
+		"rank": 300
+	},
+	{
+		"name": "Bunbun Man",
+		"class": "C",
+		"rank": 331
+	},
+	{
+		"name": "Hyottoko",
+		"class": "C",
+		"rank": 347
+	},
+	{
+		"name": "Saturn Man",
+		"class": "C",
+		"rank": 359
+	},
+	{
+		"name": "Red Nose",
+		"class": "C",
+		"rank": 385
+	},
+	{
+		"name": "Ironet",
+		"class": "C",
+		"rank": 386
+	},
+	{
+		"name": "Meat Pounder",
+		"class": "C",
+		"rank": 387
+	},
+	{
+		"name": "Mohican",
+		"class": "C",
+		"rank": 388
+	},
+	{
+		"name": "Rabbit",
+		"class": "C",
+		"rank": 389
+	},
+	{
+		"name": "Shoulderpads",
+		"class": "C",
+		"rank": 390
+	},
+	{
+		"name": "Water Gun",
+		"class": "C",
+		"rank": 391
+	},
+	{
+		"name": "Swim",
+		"class": "C",
+		"rank": 392
+	},
+]
+	
+	
+	
+	
