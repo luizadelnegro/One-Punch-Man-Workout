@@ -5,6 +5,7 @@ import 'package:flutter_calendar_carousel/flutter_calendar_carousel.dart'
 import 'package:flutter_calendar_carousel/classes/event.dart';
 import 'package:flutter_calendar_carousel/classes/event_list.dart';
 import 'package:intl/intl.dart' show DateFormat;
+import 'package:one_punch_man_workout/pages/custom_assets/custom_barless_scaffold.dart';
 import 'custom_assets/custom_scaffold.dart';
 
 class AgendaPage extends StatefulWidget {
@@ -26,16 +27,18 @@ class AgendaPage extends StatefulWidget {
 }
 
 class _AgendaPageState extends State<AgendaPage> {
-  DateTime _currentDate = DateTime(2019, 2, 3);
-  DateTime _currentDate2 = DateTime(2019, 2, 3);
-  String _currentMonth = DateFormat.yMMM().format(DateTime(2019, 2, 3));
-  DateTime _targetDateTime = DateTime(2019, 2, 3);
+
+  DateTime _currentDate = DateTime.now();
+  DateTime _currentDate2 = DateTime.now();
+  String _currentMonth = DateFormat.yMMM().format( DateTime.now());
+  DateTime _targetDateTime = DateTime.now();
 //  List<DateTime> _markedDate = [DateTime(2018, 9, 20), DateTime(2018, 10, 11)];
   static Widget _eventIcon = new Container(
     decoration: new BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.all(Radius.circular(1000)),
-        border: Border.all(color: Colors.blue, width: 2.0)),
+        border: Border.all(
+          color: Colors.grey, width: 2.0)),
     child: new Icon(
       Icons.person,
       color: Colors.amber,
@@ -44,25 +47,25 @@ class _AgendaPageState extends State<AgendaPage> {
 
   EventList<Event> _markedDateMap = new EventList<Event>(
     events: {
-      new DateTime(2019, 2, 10): [
+      new DateTime(2020, 10, 5): [
         new Event(
-          date: new DateTime(2019, 2, 10),
+          date: new DateTime(2020, 10, 5),
           title: 'Event 1',
           icon: _eventIcon,
-          dot: Container(
-            margin: EdgeInsets.symmetric(horizontal: 1.0),
-            color: Colors.red,
-            height: 5.0,
-            width: 5.0,
-          ),
+          // dot: Container(
+          //   margin: EdgeInsets.symmetric(horizontal: 1.0),
+          //   color: Colors.red,
+          //   height: 5.0,
+          //   width: 5.0,
+          // ),
         ),
         new Event(
-          date: new DateTime(2019, 2, 10),
+          date: new DateTime(2020, 10, 5),
           title: 'Event 2',
           icon: _eventIcon,
         ),
         new Event(
-          date: new DateTime(2019, 2, 10),
+          date: new DateTime(2020, 10, 5),
           title: 'Event 3',
           icon: _eventIcon,
         ),
@@ -70,40 +73,40 @@ class _AgendaPageState extends State<AgendaPage> {
     },
   );
 
-  CalendarCarousel _calendarCarousel, _calendarCarouselNoHeader;
+  CalendarCarousel _calendarCarouselNoHeader;
 
   @override
   void initState() {
     /// Add more events to _markedDateMap EventList
     _markedDateMap.add(
-        new DateTime(2019, 2, 25),
+        new DateTime(2020, 10, 6),
         new Event(
-          date: new DateTime(2019, 2, 25),
+          date: new DateTime(2020, 10, 6),
           title: 'Event 5',
           icon: _eventIcon,
         ));
 
     _markedDateMap.add(
-        new DateTime(2019, 2, 10),
+        new DateTime(2020, 10, 6),
         new Event(
-          date: new DateTime(2019, 2, 10),
+          date: new DateTime(2020, 10, 6),
           title: 'Event 4',
           icon: _eventIcon,
         ));
 
-    _markedDateMap.addAll(new DateTime(2019, 2, 11), [
+    _markedDateMap.addAll(new DateTime(2020, 10, 6), [
       new Event(
-        date: new DateTime(2019, 2, 11),
+        date: new DateTime(2020, 10, 6),
         title: 'Event 1',
         icon: _eventIcon,
       ),
       new Event(
-        date: new DateTime(2019, 2, 11),
+        date: new DateTime(2020, 10, 6),
         title: 'Event 2',
         icon: _eventIcon,
       ),
       new Event(
-        date: new DateTime(2019, 2, 11),
+        date: new DateTime(2020, 10, 6),
         title: 'Event 3',
         icon: _eventIcon,
       ),
@@ -113,49 +116,8 @@ class _AgendaPageState extends State<AgendaPage> {
 
   @override
   Widget build(BuildContext context) {
-    /// Example with custom icon
-    _calendarCarousel = CalendarCarousel<Event>(
-      onDayPressed: (DateTime date, List<Event> events) {
-        this.setState(() => _currentDate = date);
-        events.forEach((event) => print(event.title));
-      },
-      weekendTextStyle: TextStyle(
-        color: Colors.red,
-      ),
-      thisMonthDayBorderColor: Colors.grey,
-//          weekDays: null, /// for pass null when you do not want to render weekDays
-      headerText: 'Custom Header',
-      weekFormat: true,
-      markedDatesMap: _markedDateMap,
-      height: 200.0,
-      selectedDateTime: _currentDate2,
-      showIconBehindDayText: true,
-//          daysHaveCircularBorder: false, /// null for not rendering any border, true for circular border, false for rectangular border
-      customGridViewPhysics: NeverScrollableScrollPhysics(),
-      markedDateShowIcon: true,
-      markedDateIconMaxShown: 2,
-      selectedDayTextStyle: TextStyle(
-        color: Colors.yellow,
-      ),
-      todayTextStyle: TextStyle(
-        color: Colors.blue,
-      ),
-      markedDateIconBuilder: (event) {
-        return event.icon;
-      },
-      minSelectedDate: _currentDate.subtract(Duration(days: 360)),
-      maxSelectedDate: _currentDate.add(Duration(days: 360)),
-      todayButtonColor: Colors.transparent,
-      todayBorderColor: Colors.green,
-      markedDateMoreShowTotal:
-          true, // null for not showing hidden events indicator
-//          markedDateIconMargin: 9,
-//          markedDateIconOffset: 3,
-    );
-
-    /// Example Calendar Carousel without header and custom prev & next button
     _calendarCarouselNoHeader = CalendarCarousel<Event>(
-      todayBorderColor: Colors.green,
+      todayBorderColor: Colors.grey,
       onDayPressed: (DateTime date, List<Event> events) {
         this.setState(() => _currentDate2 = date);
         events.forEach((event) => print(event.title));
@@ -163,7 +125,7 @@ class _AgendaPageState extends State<AgendaPage> {
       daysHaveCircularBorder: true,
       showOnlyCurrentMonthDate: false,
       weekendTextStyle: TextStyle(
-        color: Colors.red,
+        color: Colors.grey,
       ),
       thisMonthDayBorderColor: Colors.grey,
       weekFormat: false,
@@ -174,31 +136,24 @@ class _AgendaPageState extends State<AgendaPage> {
       targetDateTime: _targetDateTime,
       customGridViewPhysics: NeverScrollableScrollPhysics(),
       markedDateCustomShapeBorder:
-          CircleBorder(side: BorderSide(color: Colors.yellow)),
+          CircleBorder(side: BorderSide(color: Colors.black)),
       markedDateCustomTextStyle: TextStyle(
         fontSize: 18,
-        color: Colors.blue,
+        color: Colors.black,
       ),
       showHeader: false,
       todayTextStyle: TextStyle(
-        color: Colors.blue,
+        color: Colors.white,
       ),
-      // markedDateShowIcon: true,
-      // markedDateIconMaxShown: 2,
-      // markedDateIconBuilder: (event) {
-      //   return event.icon;
-      // },
-      // markedDateMoreShowTotal:
-      //     true,
-      todayButtonColor: Colors.yellow,
+      todayButtonColor: Colors.grey,
       selectedDayTextStyle: TextStyle(
-        color: Colors.yellow,
+        color: Colors.white,
       ),
       minSelectedDate: _currentDate.subtract(Duration(days: 360)),
       maxSelectedDate: _currentDate.add(Duration(days: 360)),
       prevDaysTextStyle: TextStyle(
         fontSize: 16,
-        color: Colors.pinkAccent,
+        color: Colors.grey[300],
       ),
       inactiveDaysTextStyle: TextStyle(
         color: Colors.tealAccent,
@@ -216,18 +171,33 @@ class _AgendaPageState extends State<AgendaPage> {
     );
 
     return CustomScaffold(
-        title: "Calendar",
+        title: "Progress",
         body: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.start,
             children: <Widget>[
-              //custom icon
-              Container(
-                margin: EdgeInsets.symmetric(horizontal: 16.0),
-                child: _calendarCarousel,
-              ), // This trailing comma makes auto-formatting nicer for build methods.
-              //custom icon without header
+              Padding(
+                padding: EdgeInsets.all(10),
+                child: Center( 
+                  child: Text(
+                    "Your rank is:",
+                    style: TextStyle(fontSize: 10),
+                  )
+                )
+              ),
+              Center( 
+                child: Text(
+                  "Class C",
+                  style: TextStyle(fontSize: 40, fontStyle: FontStyle.italic, color: Theme.of(context).primaryColor),
+                )
+              ),
+              Center( 
+                child: Text(
+                  "Rank 78",
+                  style: TextStyle(fontSize: 27, fontStyle: FontStyle.italic, color: Theme.of(context).primaryColor),
+                )
+              ),
               Container(
                 margin: EdgeInsets.only(
                   top: 30.0,
