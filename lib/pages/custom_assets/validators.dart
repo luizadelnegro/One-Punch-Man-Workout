@@ -4,10 +4,10 @@ class Validators {
 
   static String title(String input) {
     if(input.isEmpty) {
-      return "Preencha algo";
+      return "Type a name!";
     }
     else if(input.length > 30) {
-      return "Não deve ultrapassar 30 caracteres";
+      return "It must not contain more than 30 characters";
     }
   }
 }

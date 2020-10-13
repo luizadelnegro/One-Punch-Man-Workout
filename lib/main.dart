@@ -12,8 +12,8 @@ void main() {
   runApp(MyApp());
 }
 
-class MyMaterialApp extends StatelessWidget {
-  MyMaterialApp({this.title, this.initialRoute});
+class RegisteredMaterialApp extends StatelessWidget {
+  RegisteredMaterialApp({this.title, this.initialRoute});
   final title;
   final initialRoute;
 
@@ -29,6 +29,19 @@ class MyMaterialApp extends StatelessWidget {
   }
 }
 
+class UnregisteredMaterialAApp extends StatelessWidget {
+
+  Widget build(BuildContext context){
+    
+    return MaterialApp( 
+      title: "Register!",
+      color: Theme.of(context).primaryColor,
+      theme: Manga,
+      home: WelcomeScreen()
+    );
+  }
+}
+
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -39,15 +52,15 @@ class MyApp extends StatelessWidget {
           if(snapshot.hasError){
             // TODO: Check if there is a chance of failure with SharedPreferences
             //    If there is, do a proper error management
-            return MyMaterialApp(title: "Welcome back", initialRoute: "/ranking");
+            return UnregisteredMaterialAApp();
           }
           if(snapshot.data == "") {
             // The user has not "registered" yet
-            return MyMaterialApp(title: "Welcome", initialRoute: "/welcome");
+            return UnregisteredMaterialAApp();
           }
           else {
             // The user has "registered"
-            return MyMaterialApp(title: "Welcome back", initialRoute: "/");
+            return RegisteredMaterialApp(title: "Welcome back", initialRoute: "/");
           }
         }
         else {
