@@ -2,87 +2,104 @@
 	{
 		"name": "Blast",
 		"class": "S",
-		"rank": 1
+		"rank": 1,
+		"image": "https://static.wikia.nocookie.net/onepunchman/images/2/22/Blast_Icon.png/revision/latest/scale-to-width-down/144?cb=20201002161245"
 	},
 	{
 		"name": "Tornado of Terror",
 		"class": "S",
-		"rank": 2
+		"rank": 2,
+		"image": "https://static.wikia.nocookie.net/onepunchman/images/b/b6/Tats_Icon.png/revision/latest/scale-to-width-down/144?cb=20191119041759"
 	},
 	{
 		"name": "Silver Fang",
 		"class": "S",
-		"rank": 3
+		"rank": 3,
+		"image": "https://static.wikia.nocookie.net/onepunchman/images/e/e4/Bang_Icon.png/revision/latest/scale-to-width-down/144?cb=20191107034101"
 	},
 	{
 		"name": "Atomic Samurai",
 		"class": "S",
-		"rank": 4
+		"rank": 4,
+		"image": "https://static.wikia.nocookie.net/onepunchman/images/8/88/Atomic_Icon.jpg/revision/latest/scale-to-width-down/144?cb=20191004215514"
 	},
 	{
 		"name": "Child Emperor",
 		"class": "S",
-		"rank": 5
+		"rank": 5,
+		"image": "https://static.wikia.nocookie.net/onepunchman/images/a/ae/Child_Icon.png/revision/latest/scale-to-width-down/144?cb=20200220213602"
 	},
 	{
 		"name": "Metal Knight",
 		"class": "S",
-		"rank": 6
+		"rank": 6,
+		"image": "https://static.wikia.nocookie.net/onepunchman/images/1/18/MK_Icon.png/revision/latest/scale-to-width-down/144?cb=20200420200624"
 	},
 	{
 		"name": "King",
 		"class": "S",
-		"rank": 7
+		"rank": 7,
+		"image": "https://static.wikia.nocookie.net/onepunchman/images/c/c5/King_Icon.jpg/revision/latest/scale-to-width-down/144?cb=20191107033440"
 	},
 	{
 		"name": "Zombieman",
 		"class": "S",
-		"rank": 8
+		"rank": 8,
+		"image": "https://static.wikia.nocookie.net/onepunchman/images/b/bf/Zombie_Icon.png/revision/latest/scale-to-width-down/144?cb=20191115222724"
 	},
 	{
 		"name": "Drive Knight",
 		"class": "S",
-		"rank": 9
+		"rank": 9,
+		"image": "https://static.wikia.nocookie.net/onepunchman/images/2/25/Drive_Knight_Icon.png/revision/latest/scale-to-width-down/144?cb=20200101220739"
 	},
 	{
 		"name": "Pig God",
 		"class": "S",
-		"rank": 10
+		"rank": 10,
+		"image": "https://static.wikia.nocookie.net/onepunchman/images/e/ec/Pig_God_Icon.png/revision/latest/scale-to-width-down/144?cb=20191121024958"
 	},
 	{
 		"name": "Superalloy Darkshine",
 		"class": "S",
-		"rank": 11
+		"rank": 11,
+		"image": "https://static.wikia.nocookie.net/onepunchman/images/6/61/DS_Icon.png/revision/latest/scale-to-width-down/144?cb=20191115211521"
 	},
 	{
 		"name": "Watchdog Man",
 		"class": "S",
-		"rank": 12
+		"rank": 12,
+		"image": "https://static.wikia.nocookie.net/onepunchman/images/4/46/WDM_Icon.png/revision/latest/scale-to-width-down/144?cb=20191102172611"
 	},
 	{
 		"name": "Flashy Flash",
 		"class": "S",
-		"rank": 13
+		"rank": 13,
+		"image": "https://static.wikia.nocookie.net/onepunchman/images/5/59/Flash_Icon.png/revision/latest/scale-to-width-down/144?cb=20191119211552"
 	},
 	{
 		"name": "Genos",
 		"class": "S",
-		"rank": 14
+		"rank": 14,
+		"image": "https://static.wikia.nocookie.net/onepunchman/images/d/df/Genos_Icon3.png/revision/latest/scale-to-width-down/144?cb=20191119211604"
 	},
 	{
 		"name": "Metal Bat",
 		"class": "S",
-		"rank": 15
+		"rank": 15,
+		"image": "https://static.wikia.nocookie.net/onepunchman/images/4/4a/Metal_Bat_Icon.png/revision/latest/scale-to-width-down/144?cb=20191008143537"
 	},
 	{
 		"name": "Tanktop Master",
 		"class": "S",
-		"rank": 16
+		"rank": 16,
+		"image": "https://static.wikia.nocookie.net/onepunchman/images/5/59/TTM_Icon.png/revision/latest/scale-to-width-down/144?cb=20200119171955"
 	},
 	{
 		"name": "Puri-Puri Prisoner",
 		"class": "S",
-		"rank": 17
+		"rank": 17,
+		"image": "https://static.wikia.nocookie.net/onepunchman/images/a/a5/PPP_Icon.png/revision/latest/scale-to-width-down/144?cb=20191102172625"
 	},
 	{
 		"name": "Sweet Mask",
@@ -507,9 +524,6 @@
 		"name": "Swim",
 		"class": "C",
 		"rank": 392
-	},
+	}
 ]
-	
-	
-	
 	
