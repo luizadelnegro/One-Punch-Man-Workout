@@ -1,16 +1,18 @@
-# one_punch_man_workout
+# INF1300 One Punch Man Workout
 
-A new Flutter project.
+A flutter project to motivate people to workout regularly. It is also an assignment of INF1300 - Computer Topics I (PUC-Rio).
 
 ## Getting Started
+Clone the repository and inside the folder type:
 
-This project is a starting point for a Flutter application.
+`flutter run`
 
-A few resources to get you started if this is your first Flutter project:
+You must have flutter and its dependencies installed. For more information visit https://flutter.dev/docs/get-started/test-drive?tab=terminal
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+### License
+This app is intended for educacional purposes only. Please do not redistribute, but feel free to take code snippets and ideas from here.
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Authors
+@lucasdamo
+
+@luizadelnegro
