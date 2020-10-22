@@ -8,6 +8,7 @@ class WelcomeScreen extends StatelessWidget {
   final myController = TextEditingController();
   @override
   Widget build(BuildContext context) {
+    SizeConfig().init(context);
     final _formKey = GlobalKey<FormState>();
     return Scaffold(
       backgroundColor: Theme.of(context).backgroundColor,
