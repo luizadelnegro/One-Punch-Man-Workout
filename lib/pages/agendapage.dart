@@ -7,6 +7,7 @@ import 'package:flutter_calendar_carousel/classes/event_list.dart';
 import 'package:intl/intl.dart' show DateFormat;
 import 'package:one_punch_man_workout/pages/custom_assets/custom_barless_scaffold.dart';
 import 'custom_assets/custom_scaffold.dart';
+import 'custom_assets/listexercisesmade.dart';
 
 class AgendaPage extends StatefulWidget {
   AgendaPage({Key key, this.title}) : super(key: key);
@@ -244,6 +245,7 @@ class _AgendaPageState extends State<AgendaPage> {
                 margin: EdgeInsets.symmetric(horizontal: 16.0),
                 child: _calendarCarouselNoHeader,
               ), //
+            ListExercisesMade(),
             ],
           ),
         ));

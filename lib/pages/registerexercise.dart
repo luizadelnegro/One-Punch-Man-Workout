@@ -1,9 +1,15 @@
+import 'dart:ffi';
+
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
 import 'custom_assets/addlayout.dart';
 import 'custom_assets/validators.dart';
 import 'package:one_punch_man_workout/buttons/checkbox_form_listtile.dart';
 import 'package:intl/intl.dart';
 import 'package:one_punch_man_workout/size_config.dart';
+import 'package:one_punch_man_workout/bloc/exercise_made_bloc.dart';
+import 'package:one_punch_man_workout/model/exercise_made_model.dart';
 
 class RegisterExerciseForm extends StatefulWidget {
   _RegisterExerciseFormState createState() => _RegisterExerciseFormState();
@@ -22,6 +28,9 @@ class _RegisterExerciseFormState extends State<RegisterExerciseForm> {
   @override
   Widget build(BuildContext context) {
     // Build a Form widget using the _formKey created above.
+    ExerciseMade exercise = ExerciseMade();
+    ExerciseMadeBloc bloc = ExerciseMadeBloc();
+    exercise.dtdone = now;
     return Form(
       key: _formKey,
       child: Column(
@@ -40,6 +49,14 @@ class _RegisterExerciseFormState extends State<RegisterExerciseForm> {
               height: SizeConfig.blockSizeVertical * 30,
               width: SizeConfig.blockSizeHorizontal * 30,
             ),
+            onSaved: (bool value) {
+              if(value){
+                exercise.situps = 10;
+              }
+              else {
+                exercise.situps = 0;
+              }
+            },
           ),
           CheckboxFormListTile(
             title: Text("10 Flexões"),
@@ -48,6 +65,15 @@ class _RegisterExerciseFormState extends State<RegisterExerciseForm> {
               height: SizeConfig.blockSizeVertical * 30,
               width: SizeConfig.blockSizeHorizontal * 30,
             ),
+            onSaved: (bool value) {
+              if(value){
+                exercise.pushups = 10;
+              }
+              else {
+                exercise.pushups = 0;
+              }
+            },
+            
           ),
           CheckboxFormListTile(
             title: Text("10 Agachamentos"),
@@ -56,6 +82,14 @@ class _RegisterExerciseFormState extends State<RegisterExerciseForm> {
               height: SizeConfig.blockSizeVertical * 30,
               width: SizeConfig.blockSizeHorizontal * 30,
             ),
+            onSaved: (bool value) {
+              if(value){
+                exercise.squats = 10;
+              }
+              else {
+                exercise.squats = 0;
+              }
+            },
           ),
           CheckboxFormListTile(
             title: Text("1KM Corrida"),
@@ -64,6 +98,14 @@ class _RegisterExerciseFormState extends State<RegisterExerciseForm> {
               height: SizeConfig.blockSizeVertical * 30,
               width: SizeConfig.blockSizeHorizontal * 30,
             ),
+            onSaved: (bool value) {
+              if(value){
+                exercise.run = 1.0;
+              }
+              else {
+                exercise.run = 0.0;
+              }
+            },
           ),
           Center(
             child: RaisedButton(
@@ -74,7 +116,21 @@ class _RegisterExerciseFormState extends State<RegisterExerciseForm> {
                   // If the form is valid, display a Snackbar.
                   Scaffold.of(context)
                       .showSnackBar(SnackBar(content: Text('Processing')));
+                  _formKey.currentState.save();
+                  print(exercise.completed);
+                  if(exercise.pushups == 10 && exercise.run == 1.0 && exercise.situps == 10 && exercise.squats == 10){
+                    exercise.completed = true;
+                  }
+                  else {
+                    exercise.completed = false;
+                  }
+                  bloc.addExerciseMade(exercise);
+                  Scaffold.of(context).removeCurrentSnackBar();
+                  Scaffold.of(context)
+                      .showSnackBar(SnackBar(content: Text('Completed')));
+                  print("Comp");
                 }
+
               },
               child: Text('Enviar'),
             ),
