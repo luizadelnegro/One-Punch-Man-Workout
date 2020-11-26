@@ -13,6 +13,7 @@ class CustomBarlessScaffold extends StatelessWidget {
         key: _scaffoldKey,
         backgroundColor: Theme.of(context).backgroundColor,
         resizeToAvoidBottomInset: false,
+        resizeToAvoidBottomPadding: false,
         drawer: SideMenu(),
         body: Stack(          
           children: [

@@ -1,0 +1,38 @@
+{
+  "welcomeBack": "welcome back",
+  "@welcomeBack": {
+    "description": "welcome back the user."
+  },
+  "processing": "processing",
+  "@processing": {
+    "description": "Text to show up when something is being processed"
+  },
+  "squats": "squats",
+  "@squats": {
+    "description": "Squat type of exercise in plural"
+  },
+  "pushUps": "push ups",
+  "@pushUps": {
+    "description": "Push up type of exercise in plural"
+  },
+  "sitUps": "sit ups",
+  "@sitUps": {
+    "description": "Sit up type of exercise in plural"
+  },
+  "run": "run",
+  "@run": {
+    "description": "Run type of exercise in plural"
+  },
+  "registerExercise": "register exercise",
+  "@registerExercise": {
+    "description": "Text referring to the user action of registering an exercise, in imperative"
+  },
+  "date": "date",
+  "@date": {
+    "description": "Date"
+  },
+  "send": "send",
+  "@send": {
+    "description": "Action send"
+  }
+}

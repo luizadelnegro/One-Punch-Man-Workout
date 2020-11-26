@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
-import 'custom_assets/custom_scaffold.dart';
 import '../buttons/swipe_button.dart';
 import 'package:one_punch_man_workout/preferences_controller.dart';
 import 'package:one_punch_man_workout/size_config.dart';
-import 'package:one_punch_man_workout/drawer.dart';
 import 'custom_assets/custom_barless_scaffold.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class HomePage extends StatefulWidget {
   HomePage({Key key}) : super(key: key);
@@ -24,9 +23,8 @@ class _HomePageState extends State<HomePage> {
           final heroName = snapshot.data;
           return CustomBarlessScaffold(children: [
             Center(
-                child: Text(
-              "Welcome back, $heroName !",
-              style: TextStyle(
+                child: Text(AppLocalizations.of(context).welcomeBack + ', $heroName !',
+                style: TextStyle(
                 fontFamily: 'Mangat',
                 color: Theme.of(context).primaryColor,
                 fontSize: SizeConfig.blockSizeHorizontal * 5,

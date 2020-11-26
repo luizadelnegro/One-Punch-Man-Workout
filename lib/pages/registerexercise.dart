@@ -10,6 +10,8 @@ import 'package:intl/intl.dart';
 import 'package:one_punch_man_workout/size_config.dart';
 import 'package:one_punch_man_workout/bloc/exercise_made_bloc.dart';
 import 'package:one_punch_man_workout/model/exercise_made_model.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class RegisterExerciseForm extends StatefulWidget {
   _RegisterExerciseFormState createState() => _RegisterExerciseFormState();
@@ -40,10 +42,11 @@ class _RegisterExerciseFormState extends State<RegisterExerciseForm> {
               padding: EdgeInsets.all(50),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
-                children: [Text("Date: "), Text(formatted)],
+                children: [Text((AppLocalizations.of(context).date + ": ").toUpperCase()), Text(formatted)],
               )),
           CheckboxFormListTile(
-            title: Text("10 Abdominais"),
+            
+            title: Text((AppLocalizations.of(context).sitUps).toUpperCase()),
             secondary: Image.asset(
               'assets/images/abd_bw.png',
               height: SizeConfig.blockSizeVertical * 30,
@@ -59,7 +62,7 @@ class _RegisterExerciseFormState extends State<RegisterExerciseForm> {
             },
           ),
           CheckboxFormListTile(
-            title: Text("10 Flexões"),
+            title: Text((AppLocalizations.of(context).pushUps).toUpperCase()),
             secondary: Image.asset(
               'assets/images/flex_bw.png',
               height: SizeConfig.blockSizeVertical * 30,
@@ -76,7 +79,7 @@ class _RegisterExerciseFormState extends State<RegisterExerciseForm> {
             
           ),
           CheckboxFormListTile(
-            title: Text("10 Agachamentos"),
+            title: Text((AppLocalizations.of(context).squats).toUpperCase()),
             secondary: Image.asset(
               'assets/images/squat_bw.png',
               height: SizeConfig.blockSizeVertical * 30,
@@ -92,7 +95,7 @@ class _RegisterExerciseFormState extends State<RegisterExerciseForm> {
             },
           ),
           CheckboxFormListTile(
-            title: Text("1KM Corrida"),
+            title: Text((AppLocalizations.of(context).run).toUpperCase()),
             secondary: Image.asset(
               'assets/images/run_bw.png',
               height: SizeConfig.blockSizeVertical * 30,
@@ -115,7 +118,7 @@ class _RegisterExerciseFormState extends State<RegisterExerciseForm> {
                 if (_formKey.currentState.validate()) {
                   // If the form is valid, display a Snackbar.
                   Scaffold.of(context)
-                      .showSnackBar(SnackBar(content: Text('Processing')));
+                      .showSnackBar(SnackBar(content: Text(AppLocalizations.of(context).processing.toUpperCase())));
                   _formKey.currentState.save();
                   print(exercise.completed);
                   if(exercise.pushups == 10 && exercise.run == 1.0 && exercise.situps == 10 && exercise.squats == 10){
@@ -132,7 +135,7 @@ class _RegisterExerciseFormState extends State<RegisterExerciseForm> {
                 }
 
               },
-              child: Text('Enviar'),
+              child: Text(AppLocalizations.of(context).send.toUpperCase()),
             ),
           ),
         ],
@@ -146,7 +149,7 @@ class RegisterExercise extends StatelessWidget {
   Widget build(BuildContext context) {
     return AddLayout(
       body: RegisterExerciseForm(),
-      object: "Register Exercise!",
+      object: (AppLocalizations.of(context).registerExercise + "!").toUpperCase(),
     );
   }
 }

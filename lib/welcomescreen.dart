@@ -11,6 +11,7 @@ class WelcomeScreen extends StatelessWidget {
     SizeConfig().init(context);
     final _formKey = GlobalKey<FormState>();
     return Scaffold(
+      resizeToAvoidBottomPadding: false,
       backgroundColor: Theme.of(context).backgroundColor,
       body: SafeArea(
         child:Form(

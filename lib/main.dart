@@ -1,12 +1,11 @@
 import 'package:flutter/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:one_punch_man_workout/welcomescreen.dart';
-import 'pages/homepage.dart';
 import 'package:one_punch_man_workout/preferences_controller.dart';
 import 'theme.dart';
 import 'route_generator.dart';
-import 'package:one_punch_man_workout/size_config.dart';
-import 'package:flutter/services.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 void main() {
   runApp(MyApp());
@@ -18,13 +17,22 @@ class RegisteredMaterialApp extends StatelessWidget {
   final initialRoute;
 
   Widget build(BuildContext context){
-    
     return MaterialApp( 
       title: this.title,
       color: Theme.of(context).primaryColor,
       theme: Manga,
       initialRoute: this.initialRoute,
       onGenerateRoute: RouteGenerator.generateRoute,
+      localizationsDelegates: [
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+        AppLocalizations.delegate,
+      ],
+      supportedLocales: [
+          const Locale('en', ''),
+          const Locale('pt', ''),
+        ],
     );
   }
 }
@@ -37,7 +45,17 @@ class UnregisteredMaterialAApp extends StatelessWidget {
       title: "Register!",
       color: Theme.of(context).primaryColor,
       theme: Manga,
-      home: WelcomeScreen()
+      home: WelcomeScreen(),
+      localizationsDelegates: [
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+        AppLocalizations.delegate,
+      ],
+      supportedLocales: [
+          const Locale('en', ''),
+          const Locale('pt', ''),
+        ],
     );
   }
 }
