@@ -36,24 +36,26 @@ class _AgendaPageState extends State<AgendaPage> {
   DateTime _currentDate2 = DateTime.now();
   String _currentMonth = DateFormat.yMMM().format( DateTime.now());
   DateTime _targetDateTime = DateTime.now();
-  //  List<DateTime> _markedDate = [DateTime(2018, 9, 20), DateTime(2018, 10, 11)];
-
-  void _getExercisesAddAsEvents() {
-    ExerciseMadeBloc().exercisesMade.listen(
+  
+  void _getExercisesAddAsEvents(DateTime currentDate) {
+    ExerciseMadeBloc bloc = ExerciseMadeBloc();
+    String month = currentDate.year.toString() + "/" + currentDate.month.toString();
+    bloc.getExercisesMade(query: month);
+    this._markedDateMap.clear();
+    bloc.exercisesMade.listen(
       (data) {
         for(ExerciseMade exercise in data){
-          print(exercise.dtdone);
-          Event event = new Event( 
-            date: exercise.dtdone,
+          this._markedDateMap.add(new DateTime(exercise.dtdone.year,exercise.dtdone.month,exercise.dtdone.day), new Event( 
+            date: new DateTime(exercise.dtdone.year,exercise.dtdone.month,exercise.dtdone.day),
             title: 'Event 1',
             icon: _eventIcon,
-          );
-          _markedDateMap.add(exercise.dtdone, event);
+          ));
+          this.setState(() {
+            
+          });
         }
-      },
+      }
     );
-    print(_markedDateMap.events.toString());
-    this.setState(() {_markedDateMap = _markedDateMap;});
   }
 
   static Widget _eventIcon = new Container(
@@ -73,7 +75,7 @@ class _AgendaPageState extends State<AgendaPage> {
 
   @override
   void initState() {
-    _getExercisesAddAsEvents();
+    _getExercisesAddAsEvents(this._targetDateTime);
     super.initState();
   }
 
@@ -126,11 +128,13 @@ class _AgendaPageState extends State<AgendaPage> {
         this.setState(() {
           _targetDateTime = date;
           _currentMonth = DateFormat.yMMM().format(_targetDateTime);
+          _getExercisesAddAsEvents(this._targetDateTime);
         });
       },
       onDayLongPressed: (DateTime date) {
         print('long pressed date $date');
       },
+
     );
 
     return CustomScaffold(
