@@ -16,11 +16,14 @@ class ExerciseMadeDao {
 
     List<Map<String, dynamic>> result;
     if (query != null) {
-      if (query.isNotEmpty)
+      if (query.isNotEmpty) {
+        String dateini = DateTime(int.parse(query.split("/")[0]), int.parse(query.split("/")[1]), 1).millisecondsSinceEpoch.toString();
+        String datefin = DateTime(int.parse(query.split("/")[0]), int.parse(query.split("/")[1]) + 1, 0).millisecondsSinceEpoch.toString() ;
         result = await db.query(exerciseMadeTable,
             columns: columns,
-            where: 'description LIKE ?',
-            whereArgs: ["%$query%"]);
+            where: "dtdone >= ? AND dtdone <= ?",
+            whereArgs: [dateini, datefin]);
+      }
     } else {
       result = await db.query(exerciseMadeTable, columns: columns);
     }
@@ -35,14 +38,14 @@ class ExerciseMadeDao {
     final db = await dbProvider.database;
 
     var result = await db.update(exerciseMadeTable, exercise.toDatabaseJson(),
-        where: "id = ?", whereArgs: [exercise.id]);
+        where: "dtdone = ?", whereArgs: [exercise.dtdone]);
 
     return result;
   }
 
-  Future<int> deleteExerciseMade(int id) async {
+  Future<int> deleteExerciseMade(int dtdone) async {
     final db = await dbProvider.database;
-    var result = await db.delete(exerciseMadeTable, where: 'id = ?', whereArgs: [id]);
+    var result = await db.delete(exerciseMadeTable, where: 'dtdone = ?', whereArgs: [dtdone]);
     return result;
   }
 }

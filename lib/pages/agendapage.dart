@@ -5,9 +5,12 @@ import 'package:flutter_calendar_carousel/flutter_calendar_carousel.dart'
 import 'package:flutter_calendar_carousel/classes/event.dart';
 import 'package:flutter_calendar_carousel/classes/event_list.dart';
 import 'package:intl/intl.dart' show DateFormat;
+import 'package:one_punch_man_workout/bloc/exercise_made_bloc.dart';
 import 'package:one_punch_man_workout/pages/custom_assets/custom_barless_scaffold.dart';
 import 'custom_assets/custom_scaffold.dart';
 import 'custom_assets/listexercisesmade.dart';
+import 'package:one_punch_man_workout/dao/exercise_made_dao.dart';
+import 'package:one_punch_man_workout/model/exercise_made_model.dart';
 
 class AgendaPage extends StatefulWidget {
   AgendaPage({Key key, this.title}) : super(key: key);
@@ -33,7 +36,28 @@ class _AgendaPageState extends State<AgendaPage> {
   DateTime _currentDate2 = DateTime.now();
   String _currentMonth = DateFormat.yMMM().format( DateTime.now());
   DateTime _targetDateTime = DateTime.now();
-//  List<DateTime> _markedDate = [DateTime(2018, 9, 20), DateTime(2018, 10, 11)];
+  
+  void _getExercisesAddAsEvents(DateTime currentDate) {
+    ExerciseMadeBloc bloc = ExerciseMadeBloc();
+    String month = currentDate.year.toString() + "/" + currentDate.month.toString();
+    bloc.getExercisesMade(query: month);
+    this._markedDateMap.clear();
+    bloc.exercisesMade.listen(
+      (data) {
+        for(ExerciseMade exercise in data){
+          this._markedDateMap.add(new DateTime(exercise.dtdone.year,exercise.dtdone.month,exercise.dtdone.day), new Event( 
+            date: new DateTime(exercise.dtdone.year,exercise.dtdone.month,exercise.dtdone.day),
+            title: 'Event 1',
+            icon: _eventIcon,
+          ));
+          this.setState(() {
+            
+          });
+        }
+      }
+    );
+  }
+
   static Widget _eventIcon = new Container(
     decoration: new BoxDecoration(
         color: Colors.white,
@@ -45,73 +69,13 @@ class _AgendaPageState extends State<AgendaPage> {
       color: Colors.amber,
     ),
   );
-
-  EventList<Event> _markedDateMap = new EventList<Event>(
-    events: {
-      new DateTime(2020, 10, 5): [
-        new Event(
-          date: new DateTime(2020, 10, 5),
-          title: 'Event 1',
-          icon: _eventIcon,
-          // dot: Container(
-          //   margin: EdgeInsets.symmetric(horizontal: 1.0),
-          //   color: Colors.red,
-          //   height: 5.0,
-          //   width: 5.0,
-          // ),
-        ),
-        new Event(
-          date: new DateTime(2020, 10, 5),
-          title: 'Event 2',
-          icon: _eventIcon,
-        ),
-        new Event(
-          date: new DateTime(2020, 10, 5),
-          title: 'Event 3',
-          icon: _eventIcon,
-        ),
-      ],
-    },
-  );
+  EventList<Event> _markedDateMap = new EventList();
 
   CalendarCarousel _calendarCarouselNoHeader;
 
   @override
   void initState() {
-    /// Add more events to _markedDateMap EventList
-    _markedDateMap.add(
-        new DateTime(2020, 10, 6),
-        new Event(
-          date: new DateTime(2020, 10, 6),
-          title: 'Event 5',
-          icon: _eventIcon,
-        ));
-
-    _markedDateMap.add(
-        new DateTime(2020, 10, 6),
-        new Event(
-          date: new DateTime(2020, 10, 6),
-          title: 'Event 4',
-          icon: _eventIcon,
-        ));
-
-    _markedDateMap.addAll(new DateTime(2020, 10, 6), [
-      new Event(
-        date: new DateTime(2020, 10, 6),
-        title: 'Event 1',
-        icon: _eventIcon,
-      ),
-      new Event(
-        date: new DateTime(2020, 10, 6),
-        title: 'Event 2',
-        icon: _eventIcon,
-      ),
-      new Event(
-        date: new DateTime(2020, 10, 6),
-        title: 'Event 3',
-        icon: _eventIcon,
-      ),
-    ]);
+    _getExercisesAddAsEvents(this._targetDateTime);
     super.initState();
   }
 
@@ -164,11 +128,13 @@ class _AgendaPageState extends State<AgendaPage> {
         this.setState(() {
           _targetDateTime = date;
           _currentMonth = DateFormat.yMMM().format(_targetDateTime);
+          _getExercisesAddAsEvents(this._targetDateTime);
         });
       },
       onDayLongPressed: (DateTime date) {
         print('long pressed date $date');
       },
+
     );
 
     return CustomScaffold(

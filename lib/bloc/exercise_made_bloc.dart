@@ -11,9 +11,7 @@ class ExerciseMadeBloc {
 
   get exercisesMade => _exerciseMadeController.stream;
 
-  ExerciseMadeBloc() {
-    getExercisesMade();
-  }
+  ExerciseMadeBloc();
 
   getExercisesMade({String query}) async {
     _exerciseMadeController.sink.add(await _exerciseMadeRepository.getAllExercisesMade(query: query));
