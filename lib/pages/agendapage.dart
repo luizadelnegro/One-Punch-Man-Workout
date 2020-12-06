@@ -11,6 +11,7 @@ import 'custom_assets/custom_scaffold.dart';
 import 'custom_assets/listexercisesmade.dart';
 import 'package:one_punch_man_workout/dao/exercise_made_dao.dart';
 import 'package:one_punch_man_workout/model/exercise_made_model.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class AgendaPage extends StatefulWidget {
   AgendaPage({Key key, this.title}) : super(key: key);
@@ -82,6 +83,7 @@ class _AgendaPageState extends State<AgendaPage> {
   @override
   Widget build(BuildContext context) {
     _calendarCarouselNoHeader = CalendarCarousel<Event>(
+      locale: AppLocalizations.of(context).localeName,
       todayBorderColor: Colors.grey,
       onDayPressed: (DateTime date, List<Event> events) {
         this.setState(() => _currentDate2 = date);
@@ -138,7 +140,7 @@ class _AgendaPageState extends State<AgendaPage> {
     );
 
     return CustomScaffold(
-        title: "Progress",
+        title: AppLocalizations.of(context).progress,
         body: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -148,20 +150,20 @@ class _AgendaPageState extends State<AgendaPage> {
                 padding: EdgeInsets.all(10),
                 child: Center( 
                   child: Text(
-                    "Your rank is:",
+                    AppLocalizations.of(context).yourRankIs,
                     style: TextStyle(fontSize: 10),
                   )
                 )
               ),
               Center( 
                 child: Text(
-                  "Class C",
+                  AppLocalizations.of(context).classString,
                   style: TextStyle(fontSize: 40, fontStyle: FontStyle.italic, color: Theme.of(context).primaryColor),
                 )
               ),
               Center( 
                 child: Text(
-                  "Rank 78",
+                  AppLocalizations.of(context).rank,
                   style: TextStyle(fontSize: 27, fontStyle: FontStyle.italic, color: Theme.of(context).primaryColor),
                 )
               ),
@@ -183,7 +185,7 @@ class _AgendaPageState extends State<AgendaPage> {
                       ),
                     )),
                     FlatButton(
-                      child: Text('PREV'),
+                      child: Text(AppLocalizations.of(context).prev),
                       onPressed: () {
                         setState(() {
                           _targetDateTime = DateTime(
@@ -194,7 +196,7 @@ class _AgendaPageState extends State<AgendaPage> {
                       },
                     ),
                     FlatButton(
-                      child: Text('NEXT'),
+                      child: Text(AppLocalizations.of(context).next),
                       onPressed: () {
                         setState(() {
                           _targetDateTime = DateTime(
@@ -211,7 +213,6 @@ class _AgendaPageState extends State<AgendaPage> {
                 margin: EdgeInsets.symmetric(horizontal: 16.0),
                 child: _calendarCarouselNoHeader,
               ), //
-            ListExercisesMade(),
             ],
           ),
         ));

@@ -7,5 +7,16 @@
   "run": "corrida",
   "registerExercise": "registrar exercício",
   "date": "data",
-  "send": "enviar"
+  "send": "enviar",
+  "welcomeNew": "seja bem vindo, aspirante a herói!",
+  "askName": "qual é o seu nome?",
+  "classString": "divisão",
+  "rank": "classificação",
+  "home": "inicio",
+  "progress": "progresso",
+  "ranking": "classificação",
+  "swipeRight": "arraste para a direita",
+  "yourRankIs": "sua classificação é",
+  "prev": "Anterior",
+  "next": "Próximo"
 }
