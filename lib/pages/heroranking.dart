@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:one_punch_man_workout/size_config.dart';
 import 'custom_assets/custom_barless_scaffold.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter/services.dart' show rootBundle;
 
 
@@ -44,6 +45,7 @@ class _HeroRankingState extends State<HeroRanking> {
                 ), 
                 itemBuilder: (BuildContext context, int index) {
                     String image_str = snapshot.data[index]["image"];
+                    var classString;
                     return Card( 
                       child: Stack( 
                         children: [
@@ -52,8 +54,8 @@ class _HeroRankingState extends State<HeroRanking> {
                             child: Column( 
                               children: [
                                 ListTile( 
-                                  title: Text("Class " + snapshot.data[index]['class'], style: TextStyle(backgroundColor: Colors.white),),
-                                  subtitle: Text("Rank - " + snapshot.data[index]['rank'].toString(), style: TextStyle(backgroundColor: Colors.white),),
+                                  title: Text(AppLocalizations.of(context).classString + " " + snapshot.data[index]['class'], style: TextStyle(backgroundColor: Colors.white),),
+                                  subtitle: Text(AppLocalizations.of(context).rank + " - " + snapshot.data[index]['rank'].toString(), style: TextStyle(backgroundColor: Colors.white),),
                                 ),
                                 Center( 
                                   child: Text(snapshot.data[index]['name'], style: TextStyle(backgroundColor: Colors.white),),

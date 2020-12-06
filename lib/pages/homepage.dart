@@ -39,7 +39,7 @@ class _HomePageState extends State<HomePage> {
               height: 100.0,
               width: 100.0,
               child: SwipingButton(
-                text: "Swipe right!",
+                text: AppLocalizations.of(context).swipeRight + "!",
                 onSwipeCallback: () =>
                     Navigator.of(context).pushNamed('/exercise/register'),
               ),

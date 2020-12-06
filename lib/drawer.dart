@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:one_punch_man_workout/preferences_controller.dart';
 import 'size_config.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-final entries = [
-  {'title': 'Home', 'routename': '/'},
-  {'title': 'Progress', 'routename': '/progress'},
-  {'title': 'Ranking', 'routename': '/ranking'},
-];
-
+List get_entries(BuildContext context) {
+  return [
+    {'title': AppLocalizations.of(context).home, 'routename': '/'},
+    {'title': AppLocalizations.of(context).progress, 'routename': '/progress'},
+    {'title': AppLocalizations.of(context).ranking, 'routename': '/ranking'},
+  ];
+}
 class SideMenu extends StatefulWidget {
   @override
   State<StatefulWidget> createState() => _SideMenuState();
@@ -15,6 +17,7 @@ class SideMenu extends StatefulWidget {
 class _SideMenuState extends State<SideMenu> {
   @override
   Widget build(BuildContext context) {
+    final entries = get_entries(context);
     return Drawer(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,

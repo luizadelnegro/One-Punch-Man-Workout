@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'pages/custom_assets/validators.dart';
 import 'package:one_punch_man_workout/preferences_controller.dart';
 import 'package:one_punch_man_workout/size_config.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'main.dart';
 
 class WelcomeScreen extends StatelessWidget {
@@ -26,9 +27,7 @@ class WelcomeScreen extends StatelessWidget {
               children: [
                 Container(
                   padding: EdgeInsets.only(bottom: 25),
-                  child: Text(
-                    "Welcome hero wannabe!\nWhat is your name ?",
-                  ),
+                  child: Text(AppLocalizations.of(context).welcomeNew + " " + AppLocalizations.of(context).askName)
                 ),
                 Container(
                   child: TextFormField(

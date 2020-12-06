@@ -34,5 +34,50 @@
   "send": "send",
   "@send": {
     "description": "Action send"
+  },
+  "welcomeNew": "welcome hero wannabe!",
+  "@welcomeNew": {
+    "description": "Welcome new user"
+  },
+  "askName": "what is your name?",
+  "@askName": {
+    "description": "Ask user name"
+  },
+  "classString": "class",
+  "@classString": {
+    "description": "Class"
+  },
+  "rank": "rank",
+  "@rank": {
+    "description": "Class"
+  },
+  "home": "home",
+  "@home": {
+    "description": "Home"
+  },
+  "progress": "progress",
+  "@progress": {
+    "description": "Progress"
+  },
+  "ranking": "ranking",
+  "@ranking": {
+    "description": "Ranking"
+  },
+  "swipeRight": "swipe right",
+  "@swipeRight": {
+    "description": "Swipe Right"
+  },
+  "yourRankIs": "your rank is",
+  "@yourRankIs": {
+    "description": "Your Rank Is:"
+  },
+  "prev": "prev",
+  "@prev": {
+    "description": "Previous abbreviated"
+  },
+  "next": "next",
+  "@next": {
+    "description": "Next"
   }
+  
 }
