@@ -1,7 +1,9 @@
+import 'dart:async';
+
 import 'package:one_punch_man_workout/preferences_controller.dart';
 import 'package:one_punch_man_workout/model/exercise_made_model.dart';
 import 'package:one_punch_man_workout/bloc/exercise_made_bloc.dart';
-
+import 'package:one_punch_man_workout/repository/exercise_made_repository.dart';
 
 class ClassDefinition {
   final int order;
@@ -74,26 +76,71 @@ class PlayerRank {
     await PreferencesController.setHeroXp(newXp);
     PlayerRank.xp = newXp;
   }
-  static Future<void> registerExercise(ExerciseMade exercise) async {
-    double mult = 1;
-    if(exercise.completed){
-      mult = mult + 1.5;
-    }
+  static Future<int> getExerciseStreak() async {
+    // Assumes 1 exercise per day on maximum!
+    // Returns 1 to 15
     ExerciseMadeBloc bloc = ExerciseMadeBloc();
     bloc.getExercisesMade(query: [DateTime.now().subtract(new Duration(days: 15)), DateTime.now()]);
     List<DateTime> last15Days = new List();
-    bloc.exercisesMade.listen(
-      (data) {
-        for(ExerciseMade exercise in data){
-          last15Days.add(exercise.dtdone);
-        }
-      },
-      () {
-        last15Days.sort();
-        print("A");
+    final exercises = await ExerciseMadeRepository().getAllExercisesMade();
+    for(ExerciseMade exercise in exercises) {
+      last15Days.add(exercise.dtdone);
+    }
+    // Descending sort:
+    last15Days.sort((b, a) => a.compareTo(b));
+    int daysInSequence = 1;
+    DateTime dtNow = DateTime.now();
+    DateTime lastDt = DateTime(dtNow.year, dtNow.month, dtNow.day);
+    for(DateTime dtDone in last15Days){
+      if(dtDone.difference(lastDt) >= Duration(days: 1, hours: 12)){
+        return daysInSequence;
       }
-    );
-    print("B");
+      else {
+        daysInSequence = daysInSequence + 1;
+      }
+    }
+    return daysInSequence;
+  }
+  static Future<void> registerExercise(ExerciseMade exercise) async {
+    double mult = 1;
+    double xp = 0;
+    if(exercise.completed){
+      mult = mult + 0.5;
+    }
+    int streak = await getExerciseStreak();
+    switch(streak){
+      case 15: {
+        mult = mult + 2;
+      }
+      break;
+      case 10: {
+        mult = mult + 1;
+      }
+      break;
+      case 5: {
+        mult = mult + 0.4;
+      }
+      break;
+      case 3: {
+        mult = mult + 0.2;
+      }
+      break;
+    }
+    if(exercise.pushups != 0){
+      xp = xp + exercise.pushups;
+    }
+    if(exercise.situps != 0){
+      xp = xp + exercise.situps;
+    }
+    if(exercise.squats != 0){
+      xp = xp + exercise.squats;
+    }
+    if(exercise.run != 0){
+      xp = xp + exercise.run * 3;
+    }
+    xp = xp * mult;
+    print("ADDING " + xp.toString() + " XP");
+    addPlayerXp(xp.floor());
 
   }
 
