@@ -39,7 +39,7 @@ class PlayerRank {
   static int xp;
   static int rank;
   static ClassDefinition rankClass;
-
+  static String imgPath;
   static Future<void> updatePlayerXp() async {
     PlayerRank.xp = await PreferencesController.getHeroXp();
   }
@@ -62,6 +62,17 @@ class PlayerRank {
     } else {
       return rankClass;
     }
+  }
+  static Future<String> getPlayerImgPath() async {
+    if (PlayerRank.imgPath == null){
+      PlayerRank.imgPath = await PreferencesController.getPlayerPicturePath();
+    }
+    return PlayerRank.imgPath;
+  }
+  static Future<bool> setPlayerImgPath(String path) async {
+    bool success = await PreferencesController.setPlayerPicturePath(path);
+    await getPlayerImgPath();
+    return success;
   }
   
   static Future<int> getXpToNextRank() async {

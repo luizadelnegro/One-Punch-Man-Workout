@@ -1,7 +1,11 @@
+import 'dart:convert';
+import 'dart:io';
 import 'package:flutter/material.dart';
+import 'package:one_punch_man_workout/app-settings/ranks_definition.dart';
 import 'package:one_punch_man_workout/preferences_controller.dart';
 import 'size_config.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'dart:typed_data';
 
 List get_entries(BuildContext context) {
   return [
@@ -21,8 +25,40 @@ class SideMenu extends StatefulWidget {
 }
 
 class _SideMenuState extends State<SideMenu> {
+  String img;
+  var bytes;
+
+  
+  Future<Widget> updateCircleAvatarContent() async {
+    String getImage = await PlayerRank.getPlayerImgPath();
+    if(getImage != null)
+      bytes = await File(getImage).readAsBytes();
+    this.setState(() {
+      this.img = getImage;
+    });
+  }
+  Widget getCircleAvatarContent() {
+    if(img == null){
+      print("Change Picture");
+      return Text("Change Picture");
+    }
+    else {
+      return Image.file(
+        File(img),
+        fit: BoxFit.fill,
+        
+      );
+    }
+  }
+
+  @override 
+  void initState() {
+    updateCircleAvatarContent();
+  }
+
   @override
   Widget build(BuildContext context) {
+    
     final entries = get_entries(context);
     return Drawer(
       child: Column(
@@ -40,11 +76,24 @@ class _SideMenuState extends State<SideMenu> {
                             child: Row(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
-                              CircleAvatar(
-                                child: Text("Avatar"),
-                                backgroundColor:
-                                    Theme.of(context).backgroundColor,
-                                radius: SizeConfig.blockSizeHorizontal * 7,
+                              Padding( 
+                                child: 
+                                RawMaterialButton(
+                                  child: CircleAvatar(
+                                    child: ClipOval(
+                                      child: getCircleAvatarContent(),
+                                      clipBehavior: Clip.hardEdge,
+                                    ),
+                                    backgroundColor:
+                                        Theme.of(context).backgroundColor,
+                                    radius: SizeConfig.blockSizeHorizontal * 9,
+                                  ),
+                                  onPressed: () => {
+                                    Navigator.of(context).pushNamed('/camera')
+                                  },
+                                ),
+                                padding: EdgeInsets.only(right: 15),
+
                               ),
                               Text('$heroname'),
                             ])),

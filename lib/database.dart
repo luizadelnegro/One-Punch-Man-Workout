@@ -20,7 +20,7 @@ class DatabaseProvider {
     Directory documentsDirectory = await getApplicationDocumentsDirectory();
     String path = join(documentsDirectory.path, "OnePunchManWorkout.db");
     var database = await openDatabase(path,
-        version: 3, onCreate: initDB, onUpgrade: onUpgrade);
+        version: 4, onCreate: initDB, onUpgrade: onUpgrade);
     return database;
   }
   void onUpgrade(Database database, int oldVersion, int newVersion) {
