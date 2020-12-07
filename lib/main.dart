@@ -16,8 +16,8 @@ class RegisteredMaterialApp extends StatelessWidget {
   final title;
   final initialRoute;
 
-  Widget build(BuildContext context){
-    return MaterialApp( 
+  Widget build(BuildContext context) {
+    return MaterialApp(
       title: this.title,
       color: Theme.of(context).primaryColor,
       theme: Manga,
@@ -30,18 +30,16 @@ class RegisteredMaterialApp extends StatelessWidget {
         AppLocalizations.delegate,
       ],
       supportedLocales: [
-          const Locale('en', ''),
-          const Locale('pt', ''),
-        ],
+        const Locale('en', ''),
+        const Locale('pt', ''),
+      ],
     );
   }
 }
 
 class UnregisteredMaterialAApp extends StatelessWidget {
-
-  Widget build(BuildContext context){
-    
-    return MaterialApp( 
+  Widget build(BuildContext context) {
+    return MaterialApp(
       title: "Register!",
       color: Theme.of(context).primaryColor,
       theme: Manga,
@@ -53,9 +51,9 @@ class UnregisteredMaterialAApp extends StatelessWidget {
         AppLocalizations.delegate,
       ],
       supportedLocales: [
-          const Locale('en', ''),
-          const Locale('pt', ''),
-        ],
+        const Locale('en', ''),
+        const Locale('pt', ''),
+      ],
     );
   }
 }
@@ -63,25 +61,24 @@ class UnregisteredMaterialAApp extends StatelessWidget {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder( 
+    return FutureBuilder(
       future: PreferencesController.getHeroName(),
       builder: (context, snapshot) {
-        if(snapshot.connectionState == ConnectionState.done) {
-          if(snapshot.hasError){
+        if (snapshot.connectionState == ConnectionState.done) {
+          if (snapshot.hasError) {
             // TODO: Check if there is a chance of failure with SharedPreferences
             //    If there is, do a proper error management
             return UnregisteredMaterialAApp();
           }
-          if(snapshot.data == "") {
+          if (snapshot.data == "") {
             // The user has not "registered" yet
             return UnregisteredMaterialAApp();
-          }
-          else {
+          } else {
             // The user has "registered"
-            return RegisteredMaterialApp(title: "Welcome back", initialRoute: "/");
+            return RegisteredMaterialApp(
+                title: "Welcome back", initialRoute: "/");
           }
-        }
-        else {
+        } else {
           // Loading
           return CircularProgressIndicator();
         }

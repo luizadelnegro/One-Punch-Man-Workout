@@ -4,11 +4,11 @@ import 'pages/errorpage.dart';
 import 'pages/registerexercise.dart';
 import 'pages/heroranking.dart';
 import 'pages/agendapage.dart';
+import 'pages/bluetooth.dart';
 import 'welcomescreen.dart';
 
 class RouteGenerator {
   static Route<dynamic> generateRoute(RouteSettings settings) {
-
     switch (settings.name) {
       case '/':
         return MaterialPageRoute(builder: (_) => HomePage());
@@ -20,6 +20,8 @@ class RouteGenerator {
         return MaterialPageRoute(builder: (_) => HeroRanking());
       case '/progress':
         return MaterialPageRoute(builder: (_) => AgendaPage());
+      case '/bluetooth':
+        return MaterialPageRoute(builder: (_) => BluetoothApp());
       default:
         return MaterialPageRoute(
             builder: (_) => ErrorPage(errormsg: "Invalid Route!"));
