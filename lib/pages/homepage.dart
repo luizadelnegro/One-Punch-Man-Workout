@@ -5,6 +5,7 @@ import 'package:one_punch_man_workout/size_config.dart';
 import 'custom_assets/custom_barless_scaffold.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:one_punch_man_workout/app-settings/ranks_definition.dart';
+import 'package:one_punch_man_workout/repository/exercise_made_repository.dart';
 
 class HomePage extends StatefulWidget {
   HomePage({Key key}) : super(key: key);
@@ -15,6 +16,25 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
+  bool exercisedToday =  true;
+
+
+  Future<bool> checkExercisedToday () async {
+    DateTime dtNow = DateTime.now();
+    DateTime dtToday = DateTime(dtNow.year, dtNow.month, dtNow.day);
+    final List exercises = await ExerciseMadeRepository().getAllExercisesMade(query: [dtToday, dtToday]);
+    if(exercises.isNotEmpty) this.exercisedToday = true;
+    else this.exercisedToday = true;
+    this.setState(() {
+      
+    });
+  }
+
+  @override
+  void initState() {
+    checkExercisedToday();
+  }
+
   @override
   Widget build(BuildContext context) {
     PlayerRank.getPlayerRankClass();
@@ -37,15 +57,21 @@ class _HomePageState extends State<HomePage> {
               height: SizeConfig.blockSizeVertical * 50,
               width: SizeConfig.blockSizeHorizontal * 30,
             ),
-            Container(
+            this.exercisedToday ? Container(
+              alignment: Alignment.center,
+              child: Text(AppLocalizations.of(context).alreadyTrainedNotice),
+            ) : Container(
               height: 100.0,
               width: 100.0,
               child: SwipingButton(
                 text: AppLocalizations.of(context).swipeRight + "!",
-                onSwipeCallback: () =>
-                    Navigator.of(context).pushNamed('/exercise/register'),
-              ),
-            ),
+                onSwipeCallback: () {
+                    this.setState(() {
+                      
+                    });
+                    Navigator.of(context).pushNamed('/exercise/register');
+                }
+              )),
           ]);
         });
   }

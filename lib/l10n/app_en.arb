@@ -102,5 +102,9 @@
   "xp": "xp",
   "@xp": {
     "description": "Experience abbreviated"
+  },
+  "alreadyTrainedNotice": "you have alread trained today!",
+  "@alreadyTrainedNotice": {
+    "description": "Player has already trained alert"
   }
 }

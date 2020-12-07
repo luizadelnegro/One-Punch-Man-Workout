@@ -24,5 +24,6 @@
   "fullExercise": "exercício completo",
   "returnString": "retornar",
   "gained": "adquirido",
-  "xp": "xp"
+  "xp": "xp",
+  "alreadyTrainedNotice": "voce ja treinou hoje!"
 }

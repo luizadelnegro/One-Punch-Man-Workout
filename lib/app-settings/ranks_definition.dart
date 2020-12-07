@@ -85,10 +85,8 @@ class PlayerRank {
   static Future<int> getExerciseStreak() async {
     // Assumes 1 exercise per day on maximum!
     // Returns 1 to 15
-    ExerciseMadeBloc bloc = ExerciseMadeBloc();
-    bloc.getExercisesMade(query: [DateTime.now().subtract(new Duration(days: 15)), DateTime.now()]);
     List<DateTime> last15Days = new List();
-    final exercises = await ExerciseMadeRepository().getAllExercisesMade();
+    final exercises = await ExerciseMadeRepository().getAllExercisesMade(query: [DateTime.now().subtract(new Duration(days: 15)), DateTime.now()]);
     for(ExerciseMade exercise in exercises) {
       last15Days.add(exercise.dtdone);
     }
