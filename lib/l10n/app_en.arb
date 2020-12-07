@@ -63,6 +63,10 @@
   "@ranking": {
     "description": "Ranking"
   },
+  "bluetooth": "bluetooth",
+  "@bluetooth":{
+    "description":"Bluetooth"
+  },
   "swipeRight": "swipe right",
   "@swipeRight": {
     "description": "Swipe Right"
