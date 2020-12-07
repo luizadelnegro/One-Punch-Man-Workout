@@ -124,29 +124,11 @@ class PlayerRank {
     return xp;
   }
   static double calculateMultStreak(int streak) {
-    double mult;
-    switch(streak){
-      case 15: {
-        mult = 2;
-      }
-      break;
-      case 10: {
-        mult =  1;
-      }
-      break;
-      case 5: {
-        mult = 0.4;
-      }
-      break;
-      case 3: {
-        mult = 0.2;
-      }
-      break;
-      default: {
-        mult = 0;
-      }
-    }
-    return mult;
+    if(streak >= 15) return 2;
+    if(streak >= 7) return 1;
+    if(streak >= 5) return 0.5;
+    if(streak >= 2) return 0.2;
+    return 0;
   }
   static double calculateMultStreakXP(int streak, double xp) {
     double mult = calculateMultStreak(streak);
@@ -162,15 +144,9 @@ class PlayerRank {
     totalGainedXp = totalGainedXp + calculateMultStreakXP(streak, totalGainedXp); 
     return totalGainedXp.ceil();
   }
-  static void registerExercise(ExerciseMade exercise, [int xpCalculated]) async {
-    int xp;
-    if(xpCalculated == null) {
-      xp = await calculateXpFromExerciseMade(exercise);
-    }
-    else {
-      xp = xpCalculated;
-    }
-    addPlayerXp(xp);
+  static void registerExercise(ExerciseMade exercise) async {
+    int xpCalculated = await calculateXpFromExerciseMade(exercise);
+    addPlayerXp(xpCalculated);
   }
 
 

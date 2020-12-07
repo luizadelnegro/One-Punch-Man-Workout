@@ -78,6 +78,25 @@
   "next": "next",
   "@next": {
     "description": "Next"
+  },
+  "daysStreak": "days streak",
+  "@daysStreak": {
+    "description": "Days in streak"
+  },
+  "fullExercise": "full exercise",
+  "@fullExercise": {
+    "description": "fullExercise"
+  },
+  "returnString": "return",
+  "@returnString": {
+    "description": "Return"
+  },
+  "gained": "gained",
+  "@gained": {
+    "description": "Gained"
+  },
+  "xp": "xp",
+  "@xp": {
+    "description": "Experience abbreviated"
   }
-  
 }

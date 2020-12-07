@@ -133,6 +133,7 @@ class _RegisterExerciseFormState extends State<RegisterExerciseForm> {
                   Scaffold.of(context).removeCurrentSnackBar();
                   Scaffold.of(context)
                       .showSnackBar(SnackBar(content: Text('Completed')));
+                  PlayerRank.registerExercise(exercise);
                   Navigator.of(context).pop();
                   Navigator.of(context).push(MaterialPageRoute(builder: (_) => GainXp(exercise)));
                 }

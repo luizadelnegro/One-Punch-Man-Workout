@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:one_punch_man_workout/app-settings/ranks_definition.dart';
 import 'package:one_punch_man_workout/model/exercise_made_model.dart';
 import 'package:flutter/painting.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class GainXp extends StatefulWidget {
   final ExerciseMade exercise;
@@ -22,6 +23,8 @@ class _GainXpState extends State<GainXp> {
   int initialPlayerXp = 0;
   int nexClassXp = 0;
   double percentageClass = 0;
+  int playerRankNum = 0;
+  String playerClassName = "";
   List<Text> _messagesList = [];
   _GainXpState(this.exercise);
   
@@ -81,10 +84,10 @@ class _GainXpState extends State<GainXp> {
       //updateMessagesList();
       setState((){
         _messagesList.insert(0,
-          Text("XP " + rawXp.floor().toString(),
+          Text(AppLocalizations.of(context).xp + " " + rawXp.floor().toString(),
             style: TextStyle(  
               color: Colors.black,
-              fontSize: 30
+              fontSize: 27
             )
           )
         );
@@ -97,10 +100,10 @@ class _GainXpState extends State<GainXp> {
       setState((){
         double gainedCompletedXp = this.totalGainedXp * 0.5;
         _messagesList.insert(0,
-          Text("Completed " + gainedCompletedXp.floor().toString(),
+          Text(AppLocalizations.of(context).fullExercise + " " + gainedCompletedXp.floor().toString(),
           style: TextStyle(  
               color: Colors.black,
-              fontSize: 30
+              fontSize: 27
             )
           ),
         );
@@ -113,10 +116,10 @@ class _GainXpState extends State<GainXp> {
       setState((){
         double gainedStreakXp = this.streakMult * this.totalGainedXp;
         _messagesList.insert(0,
-          Text(this.streakDays.toString() + " days streak " + gainedStreakXp.floor().toString(),
+          Text(this.streakDays.toString() + " " + AppLocalizations.of(context).daysStreak + " " + gainedStreakXp.floor().toString(),
           style: TextStyle(  
               color: Colors.black,
-              fontSize: 30
+              fontSize: 27
             )
           ),
         );
@@ -126,10 +129,16 @@ class _GainXpState extends State<GainXp> {
     });
 
   }
-
+  Future<void> getPlayerRank() async {
+    final playerClassDefinition = await PlayerRank.getPlayerRankClass();
+    this.playerClassName = playerClassDefinition.className;
+    final playerRankNum = await PlayerRank.getPlayerRankNum();
+    this.playerRankNum = playerRankNum;
+  }
   @override
   void initState() {
     //PlayerRank.registerExercise(exercise);
+    getPlayerRank();
     getPlayerInitialXp();
     calculateMultStreak();
     calculateRawXp();
@@ -142,20 +151,22 @@ class _GainXpState extends State<GainXp> {
     // TODO: implement build
     return Scaffold(  
       backgroundColor: Theme.of(context).backgroundColor,
-      appBar: AppBar(  
-        title: Text("Teste"),
-      ),
       body: Column(  
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Text("YOUR XP IS"),
-          Text((this.totalGainedXp + this.initialPlayerXp).floor().toString(),
+          Text(AppLocalizations.of(context).classString + " " + this.playerClassName,
             style: TextStyle(  
-              fontSize: 50,
+              fontSize: 40,
+            ),
+          ),
+          Text(AppLocalizations.of(context).rank + " " + this.playerRankNum.toString(),
+            style: TextStyle(  
+              fontSize: 20,
             ),
           ),
           Container(
+            padding: EdgeInsets.only(top:5, bottom: 27),
             width: 200,
             child: LinearProgressIndicator(
               value: this.percentageClass,
@@ -163,6 +174,18 @@ class _GainXpState extends State<GainXp> {
               backgroundColor: Colors.grey,
               valueColor: AlwaysStoppedAnimation<Color>(Colors.black),
             ),
+          ),
+          Container( 
+            padding: EdgeInsets.only(top: 40),
+            child: Text(AppLocalizations.of(context).gained + " " + AppLocalizations.of(context).xp),
+          ),
+          Container(
+            padding: EdgeInsets.only(bottom: 5),
+            child: Text((this.totalGainedXp).floor().toString(),
+              style: TextStyle(  
+                fontSize: 50,
+              ),
+            )
           ),
           Container(
             height: 200,
@@ -175,6 +198,12 @@ class _GainXpState extends State<GainXp> {
               )
             )
           ),
+          RaisedButton(
+            onPressed: () {
+              Navigator.of(context).pop();
+            },
+            child: Text(AppLocalizations.of(context).returnString),
+          )
         ]
       ),
     );
