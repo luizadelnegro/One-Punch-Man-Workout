@@ -13,7 +13,7 @@ class ExerciseMadeBloc {
 
   ExerciseMadeBloc();
 
-  getExercisesMade({String query}) async {
+  getExercisesMade({List<DateTime> query}) async {
     _exerciseMadeController.sink.add(await _exerciseMadeRepository.getAllExercisesMade(query: query));
   }
 
