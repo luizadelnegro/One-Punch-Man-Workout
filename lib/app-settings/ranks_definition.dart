@@ -49,26 +49,32 @@ class PlayerRank {
     }
     return xp;
   }
-  static Future<String> getPlayerRankClass() async {
+  static Future<ClassDefinition> getPlayerRankClass() async {
     xp = await getPlayerXP();
     if(rankClass == null){
       for(ClassDefinition classification in classesDefinition) {
         if ( (xp >= classification.minXp) && (xp < classification.maxXp) ) {
           PlayerRank.rankClass = classification;
-          return classification.className;
+          return classification;
 
         }
       }
     } else {
-      return rankClass.className;
+      return rankClass;
     }
+  }
+  
+  static Future<int> getXpToNextRank() async {
+    int playerRank = await getPlayerRankNum(); 
+    int nextRank = playerRank + 1;
+    int xp = await getPlayerXP();
+    double nextXP = nextRank * ((rankClass.maxXp - rankClass.minXp)/100) - xp;
+    return nextXP.ceil();
   }
   static Future<int> getPlayerRankNum() async {
     xp = await getPlayerXP();
-    await getPlayerRankClass().then((value) => () {
-       return (100 - (xp/((rankClass.maxXp - rankClass.minXp)/100))).floor();
-    });
-    // 100 - xp/((maxXp - minXp)/100)
+    ClassDefinition rankClass = await getPlayerRankClass();
+    return (100 - (xp/((rankClass.maxXp - rankClass.minXp)/100))).floor();
   }
   static Future<void> addPlayerXp(int addXp) async {
     int oldXp = await getPlayerXP();
@@ -101,31 +107,8 @@ class PlayerRank {
     }
     return daysInSequence;
   }
-  static Future<void> registerExercise(ExerciseMade exercise) async {
-    double mult = 1;
+  static double calculateRawXp(ExerciseMade exercise) {
     double xp = 0;
-    if(exercise.completed){
-      mult = mult + 0.5;
-    }
-    int streak = await getExerciseStreak();
-    switch(streak){
-      case 15: {
-        mult = mult + 2;
-      }
-      break;
-      case 10: {
-        mult = mult + 1;
-      }
-      break;
-      case 5: {
-        mult = mult + 0.4;
-      }
-      break;
-      case 3: {
-        mult = mult + 0.2;
-      }
-      break;
-    }
     if(exercise.pushups != 0){
       xp = xp + exercise.pushups;
     }
@@ -138,10 +121,56 @@ class PlayerRank {
     if(exercise.run != 0){
       xp = xp + exercise.run * 3;
     }
-    xp = xp * mult;
-    print("ADDING " + xp.toString() + " XP");
-    addPlayerXp(xp.floor());
-
+    return xp;
+  }
+  static double calculateMultStreak(int streak) {
+    double mult;
+    switch(streak){
+      case 15: {
+        mult = 2;
+      }
+      break;
+      case 10: {
+        mult =  1;
+      }
+      break;
+      case 5: {
+        mult = 0.4;
+      }
+      break;
+      case 3: {
+        mult = 0.2;
+      }
+      break;
+      default: {
+        mult = 0;
+      }
+    }
+    return mult;
+  }
+  static double calculateMultStreakXP(int streak, double xp) {
+    double mult = calculateMultStreak(streak);
+    return xp * mult;
+  }
+  static double calculateMultCompletedXP(double xp){
+    return xp * 0.5;
+  }
+  static Future<int> calculateXpFromExerciseMade(ExerciseMade exercise) async {
+    int streak = await getExerciseStreak();
+    double totalGainedXp = calculateRawXp(exercise);
+    totalGainedXp = totalGainedXp + calculateMultCompletedXP(totalGainedXp);
+    totalGainedXp = totalGainedXp + calculateMultStreakXP(streak, totalGainedXp); 
+    return totalGainedXp.ceil();
+  }
+  static void registerExercise(ExerciseMade exercise, [int xpCalculated]) async {
+    int xp;
+    if(xpCalculated == null) {
+      xp = await calculateXpFromExerciseMade(exercise);
+    }
+    else {
+      xp = xpCalculated;
+    }
+    addPlayerXp(xp);
   }
 
 

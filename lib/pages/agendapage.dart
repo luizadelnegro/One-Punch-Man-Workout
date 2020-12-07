@@ -88,7 +88,7 @@ class _AgendaPageState extends State<AgendaPage> {
     
     _getExercisesAddAsEvents(this._targetDateTime);
     PlayerRank.getPlayerRankClass().then((value) => this.setState(() {
-      this.playerClassRank = value;
+      this.playerClassRank = value.className;
     }));
     PlayerRank.getPlayerRankNum().then((value) => this.setState(() {
       this.playerRank = value;
