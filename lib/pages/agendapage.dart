@@ -12,6 +12,7 @@ import 'custom_assets/listexercisesmade.dart';
 import 'package:one_punch_man_workout/dao/exercise_made_dao.dart';
 import 'package:one_punch_man_workout/model/exercise_made_model.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:one_punch_man_workout/app-settings/ranks_definition.dart';
 
 class AgendaPage extends StatefulWidget {
   AgendaPage({Key key, this.title}) : super(key: key);
@@ -37,11 +38,18 @@ class _AgendaPageState extends State<AgendaPage> {
   DateTime _currentDate2 = DateTime.now();
   String _currentMonth = DateFormat.yMMM().format( DateTime.now());
   DateTime _targetDateTime = DateTime.now();
+  String playerClassRank;
+  int playerRank;
   
   void _getExercisesAddAsEvents(DateTime currentDate) {
     ExerciseMadeBloc bloc = ExerciseMadeBloc();
-    String month = currentDate.year.toString() + "/" + currentDate.month.toString();
-    bloc.getExercisesMade(query: month);
+    DateTime dataIni = DateTime(currentDate.year, currentDate.month, 1);
+    DateTime dataFin = DateTime(currentDate.year, currentDate.month, 28);
+    dataIni.subtract(new Duration(days: 5));
+    dataFin.add(new Duration(days: 8));
+    String month = dataIni.year.toString() + "/" + dataIni.month.toString() + "/" + dataIni.day.toString() + "," + dataFin.year.toString() + "/" + dataFin.month.toString() + "/" + dataFin.day.toString();
+    
+    bloc.getExercisesMade(query: [dataIni, dataFin]);
     this._markedDateMap.clear();
     bloc.exercisesMade.listen(
       (data) {
@@ -76,7 +84,14 @@ class _AgendaPageState extends State<AgendaPage> {
 
   @override
   void initState() {
+    
     _getExercisesAddAsEvents(this._targetDateTime);
+    PlayerRank.getPlayerRankClass().then((value) => this.setState(() {
+      this.playerClassRank = value;
+    }));
+    PlayerRank.getPlayerRankNum().then((value) => this.setState(() {
+      this.playerRank = value;
+    }));
     super.initState();
   }
 
@@ -157,13 +172,13 @@ class _AgendaPageState extends State<AgendaPage> {
               ),
               Center( 
                 child: Text(
-                  AppLocalizations.of(context).classString,
+                  AppLocalizations.of(context).classString + " " + this.playerClassRank.toString(),
                   style: TextStyle(fontSize: 40, fontStyle: FontStyle.italic, color: Theme.of(context).primaryColor),
                 )
               ),
               Center( 
                 child: Text(
-                  AppLocalizations.of(context).rank,
+                  AppLocalizations.of(context).rank + " " + this.playerRank.toString(),
                   style: TextStyle(fontSize: 27, fontStyle: FontStyle.italic, color: Theme.of(context).primaryColor),
                 )
               ),

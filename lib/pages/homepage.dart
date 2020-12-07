@@ -4,6 +4,7 @@ import 'package:one_punch_man_workout/preferences_controller.dart';
 import 'package:one_punch_man_workout/size_config.dart';
 import 'custom_assets/custom_barless_scaffold.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:one_punch_man_workout/app-settings/ranks_definition.dart';
 
 class HomePage extends StatefulWidget {
   HomePage({Key key}) : super(key: key);
@@ -16,6 +17,7 @@ class _HomePageState extends State<HomePage> {
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
   @override
   Widget build(BuildContext context) {
+    PlayerRank.getPlayerRankClass();
     SizeConfig().init(context);
     return FutureBuilder(
         future: PreferencesController.getHeroName(),

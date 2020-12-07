@@ -11,18 +11,20 @@ class ExerciseMadeDao {
     return result;
   }
 
-  Future<List<ExerciseMade>> getExercisesMade({List<String> columns, String query}) async {
+  Future<List<ExerciseMade>> getExercisesMade({List<String> columns, List<DateTime> query}) async {
     final db = await dbProvider.database;
 
     List<Map<String, dynamic>> result;
     if (query != null) {
       if (query.isNotEmpty) {
-        String dateini = DateTime(int.parse(query.split("/")[0]), int.parse(query.split("/")[1]), 1).millisecondsSinceEpoch.toString();
-        String datefin = DateTime(int.parse(query.split("/")[0]), int.parse(query.split("/")[1]) + 1, 0).millisecondsSinceEpoch.toString() ;
+
+        String dateIni = query[0].millisecondsSinceEpoch.toString();
+        String dateFin = query[1].millisecondsSinceEpoch.toString();
+
         result = await db.query(exerciseMadeTable,
             columns: columns,
             where: "dtdone >= ? AND dtdone <= ?",
-            whereArgs: [dateini, datefin]);
+            whereArgs: [dateIni, dateFin]);
       }
     } else {
       result = await db.query(exerciseMadeTable, columns: columns);
