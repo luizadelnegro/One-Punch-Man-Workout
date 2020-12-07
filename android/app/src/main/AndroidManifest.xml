@@ -1,6 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.one_punch_man_workout"
-    xmlns:tools="http://schemas.android.com/tools">
+    package="com.example.one_punch_man_workout">
 
     <!-- io.flutter.app.FlutterApplication is an android.app.Application that
          calls FlutterMain.startInitialization(this); in its onCreate method.
@@ -8,10 +7,9 @@
          additional functionality it is fine to subclass or reimplement
          FlutterApplication and put your custom class here. -->
     <!-- Add this line (inside manifest tag) -->
-      
- <uses-sdk tools:overrideLibrary="io.github.edufolly.flutterbluetoothserial"/>
   <uses-permission android:name="android.permission.BLUETOOTH" />
     <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
     <application
         android:name="io.flutter.app.FlutterApplication"
         android:label="one_punch_man_workout"
