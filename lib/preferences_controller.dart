@@ -29,4 +29,17 @@ class PreferencesController {
     });
     return false;
   }
+
+  static Future<String> getPlayerPicturePath() async {
+    final prefs = await SharedPreferences.getInstance();
+    return prefs.getString('pic_path');
+  }
+
+  static Future<bool> setPlayerPicturePath(String path) async {
+    final prefs = await SharedPreferences.getInstance();
+    prefs.setString('pic_path', path).then((bool success) {
+      return true;
+    });
+    return false;
+  }
 }
