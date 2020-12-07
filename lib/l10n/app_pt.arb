@@ -17,6 +17,11 @@
   "ranking": "classificação",
   "swipeRight": "arraste para a direita",
   "yourRankIs": "sua classificação é",
-  "prev": "Anterior",
-  "next": "Próximo"
+  "prev": "anterior",
+  "next": "próximo",
+  "daysStreak": "days streak",
+  "fullExercise": "exercício completo",
+  "returnString": "retornar",
+  "gained": "adquirido",
+  "xp": "xp"
 }

@@ -49,7 +49,7 @@ class _AgendaPageState extends State<AgendaPage> {
     dataFin.add(new Duration(days: 8));
     String month = dataIni.year.toString() + "/" + dataIni.month.toString() + "/" + dataIni.day.toString() + "," + dataFin.year.toString() + "/" + dataFin.month.toString() + "/" + dataFin.day.toString();
     
-    bloc.getExercisesMade(query: [dataIni, dataFin]);
+  
     this._markedDateMap.clear();
     bloc.exercisesMade.listen(
       (data) {
@@ -65,6 +65,7 @@ class _AgendaPageState extends State<AgendaPage> {
         }
       }
     );
+    bloc.getExercisesMade(query: [dataIni, dataFin]);
   }
 
   static Widget _eventIcon = new Container(
@@ -87,7 +88,7 @@ class _AgendaPageState extends State<AgendaPage> {
     
     _getExercisesAddAsEvents(this._targetDateTime);
     PlayerRank.getPlayerRankClass().then((value) => this.setState(() {
-      this.playerClassRank = value;
+      this.playerClassRank = value.className;
     }));
     PlayerRank.getPlayerRankNum().then((value) => this.setState(() {
       this.playerRank = value;

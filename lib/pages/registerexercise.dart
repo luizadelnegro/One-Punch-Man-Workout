@@ -13,6 +13,7 @@ import 'package:one_punch_man_workout/model/exercise_made_model.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:one_punch_man_workout/app-settings/ranks_definition.dart';
+import 'package:one_punch_man_workout/pages/gain_xp_page.dart';
 
 class RegisterExerciseForm extends StatefulWidget {
   _RegisterExerciseFormState createState() => _RegisterExerciseFormState();
@@ -133,7 +134,8 @@ class _RegisterExerciseFormState extends State<RegisterExerciseForm> {
                   Scaffold.of(context)
                       .showSnackBar(SnackBar(content: Text('Completed')));
                   PlayerRank.registerExercise(exercise);
-                  print("Comp");
+                  Navigator.of(context).pop();
+                  Navigator.of(context).push(MaterialPageRoute(builder: (_) => GainXp(exercise)));
                 }
 
               },
