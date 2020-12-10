@@ -6,8 +6,12 @@ import 'custom_assets/custom_barless_scaffold.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:one_punch_man_workout/app-settings/ranks_definition.dart';
 import 'package:one_punch_man_workout/repository/exercise_made_repository.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:one_punch_man_workout/dao/exercise_made_dao.dart';
 
 class HomePage extends StatefulWidget {
+  static _HomePageState of(BuildContext context) => context.ancestorStateOfType(const TypeMatcher<_HomePageState>());
+
   HomePage({Key key}) : super(key: key);
 
   @override
@@ -18,15 +22,15 @@ class _HomePageState extends State<HomePage> {
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
   bool exercisedToday =  true;
 
-
   Future<bool> checkExercisedToday () async {
     DateTime dtNow = DateTime.now();
     DateTime dtToday = DateTime(dtNow.year, dtNow.month, dtNow.day);
     final List exercises = await ExerciseMadeRepository().getAllExercisesMade(query: [dtToday, dtToday]);
     if(exercises.isNotEmpty) this.exercisedToday = true;
-    else this.exercisedToday = true;
+    else this.exercisedToday = false;
     this.setState(() {
-      
+      if(exercises.isNotEmpty) this.exercisedToday = true;
+      else this.exercisedToday = false;
     });
   }
 

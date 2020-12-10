@@ -10,10 +10,18 @@ import 'dart:math';
 // FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin;
 
 class BluetoothApp extends StatelessWidget {
-  // FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
-  //     FlutterLocalNotificationsPlugin();
+  FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin = FlutterLocalNotificationsPlugin();
+  
+
   @override
   Widget build(BuildContext context) {
+    
+    flutterLocalNotificationsPlugin.initialize(
+      InitializationSettings(
+      
+      ),
+    );
+    flutterLocalNotificationsPlugin.show(0, "A", "body", NotificationDetails());
     return MaterialApp(
       color: Theme.of(context).primaryColor,
       home: StreamBuilder<BluetoothState>(
