@@ -30,7 +30,7 @@ final classesDefinition = [
     new ClassDefinition(
       3,
       "C",
-      1,
+      0,
       1999
     )
 ];

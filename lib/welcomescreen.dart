@@ -50,7 +50,7 @@ class WelcomeScreen extends StatelessWidget {
                               if (_formKey.currentState.validate()) {
                                 PreferencesController.setHeroName(
                                     myController.text);
-                                Navigator.of(context).push(
+                                Navigator.of(context).pushReplacement(
                                     MaterialPageRoute(builder: (_) => MyApp()));
                               }
                             },

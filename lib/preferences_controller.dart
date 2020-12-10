@@ -3,6 +3,12 @@ import 'dart:async';
 
 class PreferencesController {
 
+  static Future<void> deleteSharedPreferences() async {
+    // For debugging
+    final prefs = await SharedPreferences.getInstance();
+    prefs.clear();
+  }
+
   static Future<String> getHeroName() async {
     final prefs = await SharedPreferences.getInstance();
     return prefs.getString('hero_name') ?? "";
@@ -18,7 +24,7 @@ class PreferencesController {
 
   static Future<int> getHeroXp() async {
     final prefs = await SharedPreferences.getInstance();
-    return int.parse(prefs.getString('hero_xp') ?? "-1");
+    return int.parse(prefs.getString('hero_xp') ?? "0");
   }
 
   static Future<bool> setHeroXp(int xp) async {

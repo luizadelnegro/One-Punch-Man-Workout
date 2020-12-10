@@ -39,14 +39,12 @@ class _SideMenuState extends State<SideMenu> {
   }
   Widget getCircleAvatarContent() {
     if(img == null){
-      print("Change Picture");
       return Text("Change Picture");
     }
     else {
       return Image.file(
         File(img),
         fit: BoxFit.fill,
-        
       );
     }
   }
@@ -58,7 +56,6 @@ class _SideMenuState extends State<SideMenu> {
 
   @override
   Widget build(BuildContext context) {
-    
     final entries = get_entries(context);
     return Drawer(
       child: Column(
@@ -81,8 +78,11 @@ class _SideMenuState extends State<SideMenu> {
                                 RawMaterialButton(
                                   child: CircleAvatar(
                                     child: ClipOval(
-                                      child: getCircleAvatarContent(),
-                                      clipBehavior: Clip.hardEdge,
+                                      child: Container(
+                                        child:getCircleAvatarContent(),
+                                        width: 100,
+                                        height: 100,
+                                      )
                                     ),
                                     backgroundColor:
                                         Theme.of(context).backgroundColor,

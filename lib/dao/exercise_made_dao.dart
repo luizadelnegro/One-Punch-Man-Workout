@@ -50,4 +50,10 @@ class ExerciseMadeDao {
     var result = await db.delete(exerciseMadeTable, where: 'dtdone = ?', whereArgs: [dtdone]);
     return result;
   }
+
+  Future<void> deleteAll() async {
+    // For debugging
+    final db = await dbProvider.database;
+    db.delete(exerciseMadeTable);
+  }
 }

@@ -8,6 +8,7 @@ import 'route_generator.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:one_punch_man_workout/pages/camera.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 
 Future<void> main() async {
   // Ensure that plugin services are initialized so that `availableCameras()`

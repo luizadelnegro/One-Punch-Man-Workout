@@ -127,6 +127,7 @@ class DisplayPictureScreen extends StatelessWidget {
           if(index == 1){
             print("New imagePath " + imagePath);
             PlayerRank.setPlayerImgPath(imagePath);
+            
           }
         },
         items: [

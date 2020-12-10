@@ -4,6 +4,7 @@ import 'package:one_punch_man_workout/app-settings/ranks_definition.dart';
 import 'package:one_punch_man_workout/model/exercise_made_model.dart';
 import 'package:flutter/painting.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'homepage.dart';
 
 class GainXp extends StatefulWidget {
   final ExerciseMade exercise;
@@ -148,7 +149,7 @@ class _GainXpState extends State<GainXp> {
 
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
+    
     return Scaffold(  
       backgroundColor: Theme.of(context).backgroundColor,
       body: Column(  
@@ -169,7 +170,7 @@ class _GainXpState extends State<GainXp> {
             padding: EdgeInsets.only(top:5, bottom: 27),
             width: 200,
             child: LinearProgressIndicator(
-              value: this.percentageClass,
+              value: (this.percentageClass == null) ? 0 : this.percentageClass,
               minHeight: 10,
               backgroundColor: Colors.grey,
               valueColor: AlwaysStoppedAnimation<Color>(Colors.black),
@@ -200,7 +201,7 @@ class _GainXpState extends State<GainXp> {
           ),
           RaisedButton(
             onPressed: () {
-              Navigator.of(context).pop();
+              Navigator.of(context).pushReplacementNamed("/");
             },
             child: Text(AppLocalizations.of(context).returnString),
           )
