@@ -1,6 +1,8 @@
 # INF1300 One Punch Man Workout
 
 A flutter project to motivate people to workout regularly. It is also an assignment of INF1300 - Computer Topics I (PUC-Rio).
+To see what the app can do we have a presentation for you(PT):
+https://docs.google.com/presentation/d/13FenjgF580yWstIj7txeKSIu1n1HeqICqafMm7MG4o4/edit
 
 ## Getting Started
 Clone the repository and inside the folder type:
